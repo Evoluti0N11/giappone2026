@@ -10,19 +10,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary: #BC002D; /* Rosso Giappone */
             --dark: #111111;
             --text: #2c3e50;
-            --cat: #E67E22;
+            --cat: #E67E22; /* Arancione Gatto */
             --tip-bg: #FFF8E1;
             --tip-border: #FFC107;
             --radius: 16px;
-            --glass: rgba(255, 255, 255, 0.92); /* Sfondo card semi-trasparente */
+            --glass: rgba(255, 255, 255, 0.95);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,17 +32,18 @@
             font-family: 'Inter', sans-serif; 
             color: var(--text); 
             line-height: 1.6;
-            /* SFONDO FISSO DIETRO LE GIORNATE */
             background: url('https://github.com/Evoluti0N11/giappone2026/blob/main/a6e6bd_bb276caf5b3c49c1826275fa66e45385~mv2.jpg?raw=true') no-repeat center center fixed; 
             background-size: cover;
+            padding-bottom: 50px;
         }
 
-        h1, h2, h3, .day-date { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, .day-date, .jp-text { font-family: 'Montserrat', sans-serif; }
+        .jp-font { font-family: 'Noto Sans JP', sans-serif; }
 
-        /* --- HERO SECTION (BANNER) --- */
+        /* --- HERO SECTION --- */
         header {
             position: relative;
-            height: 65vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -49,33 +51,35 @@
             text-align: center;
             color: white;
             overflow: hidden;
-            margin-bottom: -30px; /* Overlap per la nav */
+            margin-bottom: -25px;
         }
 
         .hero-bg-img {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* IMMAGINE BANNER */
             background-image: url('https://github.com/Evoluti0N11/giappone2026/blob/main/Giappone-immagine-principale.jpg?raw=true');
             background-size: cover;
             background-position: center;
             z-index: -1;
-            filter: brightness(0.7);
+            filter: brightness(0.6);
+            transform: scale(1.05); /* Leggero zoom */
         }
 
         header h1 { 
-            font-size: clamp(2.5rem, 6vw, 5rem); 
+            font-size: clamp(2.5rem, 6vw, 4.5rem); 
             margin-bottom: 10px; 
             text-shadow: 0 4px 15px rgba(0,0,0,0.6);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         header p { 
-            font-size: clamp(1rem, 2.5vw, 1.5rem); 
-            font-weight: 300; opacity: 0.95; 
-            background: rgba(0,0,0,0.3);
-            padding: 5px 15px; border-radius: 20px;
+            font-size: clamp(1rem, 2.5vw, 1.3rem); 
+            font-weight: 400; 
+            background: rgba(0,0,0,0.4);
+            padding: 8px 20px; 
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
         }
 
         /* --- STICKY NAV --- */
@@ -85,200 +89,259 @@
             z-index: 100;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 40px;
             padding: 0 10px;
+            flex-wrap: wrap;
         }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             color: var(--dark);
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
             display: flex; align-items: center; gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+
+        .nav-btn:hover { transform: translateY(-2px); background: white; }
 
         .nav-btn.active {
             background: var(--primary);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(188, 0, 45, 0.4);
+            box-shadow: 0 6px 20px rgba(188, 0, 45, 0.4);
         }
 
         /* --- CONTAINER --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 15px 80px 15px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 15px 60px 15px; }
 
         /* --- DAY CARD --- */
         .day-card {
-            background: var(--glass); /* Effetto vetro */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: var(--glass);
+            backdrop-filter: blur(12px);
             border-radius: var(--radius);
-            margin-bottom: 25px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
             cursor: pointer;
             overflow: hidden;
             transition: var(--transition);
-            border-left: 6px solid var(--primary);
+            border-left: 5px solid var(--primary);
         }
 
-        .day-card:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 1); }
-        .day-card.special-cat { border-left-color: var(--cat); }
-
-        /* Header della Card */
+        .day-card:hover { transform: translateY(-3px); }
+        
+        /* Header Card */
         .day-header { 
-            padding: 20px; 
+            padding: 18px 22px; 
             display: flex; 
             align-items: center; 
-            min-height: 90px;
+            min-height: 85px;
         }
         
         .date-box {
             background: #fff;
             border: 1px solid #eee;
             border-radius: 12px;
-            padding: 8px;
-            min-width: 65px;
+            padding: 6px;
+            min-width: 60px;
             text-align: center;
-            margin-right: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-right: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .date-num { display: block; font-size: 1.4rem; font-weight: 800; color: var(--dark); line-height: 1; }
-        .date-month { font-size: 0.7rem; text-transform: uppercase; color: #666; font-weight: 700; }
+        .date-num { display: block; font-size: 1.3rem; font-weight: 800; color: var(--dark); line-height: 1; }
+        .date-month { font-size: 0.65rem; text-transform: uppercase; color: #666; font-weight: 700; margin-top: 2px; display: block;}
 
         .day-info { flex: 1; }
-        .day-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--dark); font-weight: 700; }
-        .day-route { font-size: 0.85rem; color: #555; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-        .day-route i { color: var(--primary); }
+        .day-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--dark); font-weight: 700; letter-spacing: -0.5px; }
+        .day-route { font-size: 0.8rem; color: #555; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .day-route i { color: var(--primary); font-size: 0.9rem; }
         
         .toggle-icon { 
-            width: 30px; height: 30px; 
-            background: rgba(0,0,0,0.05); border-radius: 50%; 
+            width: 32px; height: 32px; 
+            background: rgba(0,0,0,0.04); border-radius: 50%; 
             display: flex; align-items: center; justify-content: center;
             color: #666; transition: var(--transition); 
+            font-size: 0.8rem;
         }
         .day-card.active .toggle-icon { transform: rotate(180deg); background: var(--primary); color: white; }
 
-        /* Corpo della Card */
-        .day-body { display: none; border-top: 1px solid rgba(0,0,0,0.05); animation: fadeIn 0.4s; padding-bottom: 15px;}
+        /* Corpo Card */
+        .day-body { display: none; border-top: 1px solid rgba(0,0,0,0.06); animation: fadeIn 0.4s ease; padding-bottom: 20px;}
         .day-card.active .day-body { display: block; }
+
+        /* STILI SPECIFICI PER IL GIORNO DEI GATTI (19 GEN) */
+        .day-card.special-cat { border-left-color: var(--cat); }
+        .day-card.special-cat .date-box { border-color: var(--cat); }
+        .day-card.special-cat .date-num { color: var(--cat); } /* NUMERO ARANCIONE */
+        .day-card.special-cat .date-month { color: var(--cat); } /* MESE ARANCIONE */
+        .day-card.special-cat .step-icon { border-color: var(--cat); color: var(--cat); }
+        .day-card.special-cat .btn-map { background: #FFF3E0; color: #D84315; }
+        .day-card.special-cat .btn-map:hover { background: #FFE0B2; }
 
         /* Logistics & Tips */
         .logistics {
-            background: rgba(33, 150, 243, 0.1);
-            padding: 12px 20px; color: #0d47a1; font-size: 0.9rem; 
+            background: #E3F2FD;
+            padding: 12px 22px; color: #1565C0; font-size: 0.85rem; 
             border-left: 4px solid #2196F3;
+            display: flex; align-items: start; gap: 10px;
+            line-height: 1.5;
         }
         .local-tip {
-            margin: 15px 20px; padding: 15px;
+            margin: 15px 22px; padding: 15px;
             background-color: var(--tip-bg);
             border-left: 4px solid var(--tip-border);
-            border-radius: 0 8px 8px 0;
+            border-radius: 4px;
             font-size: 0.9rem; color: #5D4037;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
-        .local-tip-title { font-weight: 700; color: #F57F17; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+        .local-tip-title { font-weight: 700; color: #F57F17; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; text-transform: uppercase; }
 
         /* Timeline Steps */
-        .steps-list { list-style: none; padding: 15px 20px; }
-        .step { position: relative; padding-left: 35px; margin-bottom: 30px; }
+        .steps-list { list-style: none; padding: 15px 22px; }
+        .step { position: relative; padding-left: 40px; margin-bottom: 35px; }
         .step::before { 
-            content: ''; position: absolute; left: 13px; top: 30px; bottom: -40px; width: 2px; background: #ddd; 
+            content: ''; position: absolute; left: 14px; top: 32px; bottom: -45px; width: 2px; background: #e0e0e0; 
         }
         .step:last-child::before { display: none; }
         
         .step-icon {
-            position: absolute; left: 0; top: 0; width: 28px; height: 28px;
+            position: absolute; left: 0; top: 0; width: 30px; height: 30px;
             background: white; border: 2px solid var(--primary); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 0.8rem; z-index: 2;
+            display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 0.85rem; z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .step-time { font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 2px;}
-        .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 5px; color: var(--dark); }
-        .step-desc { font-size: 0.9rem; color: #444; margin-bottom: 10px; }
+        .step-time { font-size: 0.7rem; font-weight: 800; color: #999; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;}
+        .step-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
+        .step-desc { font-size: 0.9rem; color: #555; line-height: 1.5; }
 
-        /* --- FOTO ESPANDIBILI (LIGHTBOX) --- */
+        /* Immagini */
         .step-img-container {
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            margin-top: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            margin-top: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             cursor: zoom-in;
+            transition: transform 0.3s ease;
         }
+        .step-img-container:hover { transform: scale(1.02); }
         .step-img {
-            width: 100%; height: 200px; object-fit: cover;
-            display: block; transition: transform 0.5s;
+            width: 100%; height: 180px; object-fit: cover;
+            display: block;
         }
-        .step-img:hover { transform: scale(1.03); }
         .img-hint {
-            position: absolute; bottom: 5px; right: 5px;
-            background: rgba(0,0,0,0.6); color: white;
-            padding: 3px 8px; border-radius: 4px; font-size: 0.7rem;
-            pointer-events: none;
+            position: absolute; bottom: 8px; right: 8px;
+            background: rgba(0,0,0,0.7); color: white;
+            padding: 4px 10px; border-radius: 20px; font-size: 0.7rem;
+            backdrop-filter: blur(4px);
+            font-weight: 600;
         }
 
-        /* LIGHTBOX OVERLAY */
+        /* LIGHTBOX */
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 2000;
+            background: rgba(0,0,0,0.92); z-index: 2000;
             display: none; justify-content: center; align-items: center;
             cursor: zoom-out;
-            animation: fadeIn 0.2s;
+            animation: fadeIn 0.3s;
+            padding: 20px;
         }
         #lightbox img {
-            max-width: 95%; max-height: 95%;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 100%; max-height: 90vh;
+            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
         }
 
-        /* BUTTONS */
-        .action-area { padding: 0 20px; margin-bottom: 15px; }
-        .btn-map {
-            display: block; width: 100%; text-align: center;
-            background: #F1F3F4; color: #333; padding: 12px;
-            border-radius: 8px; text-decoration: none; font-weight: 600;
-            font-size: 0.9rem; transition: 0.2s;
+        /* ACTION AREA & BUTTONS */
+        .action-area { 
+            padding: 10px 22px 0; 
+            display: flex; 
+            justify-content: center; 
+            flex-direction: column;
+            align-items: center;
         }
-        .btn-map:hover { background: #E0E0E0; }
+        
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background: #eee;
+            margin: 15px 0;
+            border: none;
+        }
+
+        .btn-map {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: #f0f2f5; color: #333; 
+            padding: 10px 25px;
+            border-radius: 30px; text-decoration: none; font-weight: 600;
+            font-size: 0.85rem; transition: 0.2s;
+            border: 1px solid #ddd;
+            max-width: 280px;
+            width: 100%;
+        }
+        .btn-map:hover { background: #e4e6e9; border-color: #ccc; transform: translateY(-1px); }
+
         .btn-klook { 
             display: inline-block; background: #FF5722; color: white; 
-            padding: 6px 12px; border-radius: 4px; text-decoration: none; 
-            font-size: 0.8rem; font-weight: bold; margin-top: 5px;
+            padding: 8px 16px; border-radius: 6px; text-decoration: none; 
+            font-size: 0.85rem; font-weight: bold; margin-top: 8px;
+            box-shadow: 0 2px 6px rgba(255, 87, 34, 0.3);
+            transition: 0.2s;
         }
+        .btn-klook:hover { background: #F4511E; }
 
-        /* ACCOMMODATION */
-        #accommodations { display: none; }
-        .hotel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .hotel-card { background: rgba(255,255,255,0.95); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-        .hotel-img { height: 180px; background-size: cover; background-position: center; position: relative; }
+        /* TAB CONTENT */
+        #accommodations, #sources { display: none; animation: fadeIn 0.4s; }
+
+        /* HOTEL GRID */
+        .hotel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .hotel-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: 0.3s; }
+        .hotel-card:hover { transform: translateY(-5px); }
+        .hotel-img { height: 160px; background-size: cover; background-position: center; position: relative; }
         .hotel-badge {
-            position: absolute; top: 10px; left: 10px;
-            background: var(--primary); color: white; padding: 4px 8px;
-            border-radius: 4px; font-size: 0.7rem; font-weight: 700;
+            position: absolute; top: 12px; left: 12px;
+            background: var(--primary); color: white; padding: 4px 10px;
+            border-radius: 4px; font-size: 0.65rem; font-weight: 800; letter-spacing: 1px;
         }
-        .hotel-info { padding: 15px; }
+        .hotel-info { padding: 18px; }
+        .hotel-info h3 { margin-bottom: 5px; }
+        .hotel-meta { font-size: 0.85rem; color: #666; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;}
         .btn-book { 
             display: block; text-align: center; background: var(--dark); color: white; 
-            padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 10px; 
+            padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            transition: 0.2s;
         }
+        .btn-book:hover { background: #333; }
 
-        /* ANIMATIONS & UTILS */
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* FONTI LIST */
+        .sources-list { background: white; padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .sources-list li { margin-bottom: 10px; font-size: 0.85rem; border-bottom: 1px solid #eee; padding-bottom: 10px; list-style: none; }
+        .sources-list a { color: var(--primary); text-decoration: none; word-break: break-all; }
+        .sources-list a:hover { text-decoration: underline; }
+
+        /* UTILS */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        .special-cat .date-box { color: var(--cat); border-color: var(--cat); }
-        .special-cat .step-icon { border-color: var(--cat); color: var(--cat); }
-        
+        /* Goodbye Section */
+        .goodbye-section { text-align: center; padding: 15px 0; }
+        .goodbye-jp { font-size: 1.5rem; color: var(--primary); margin-bottom: 5px; }
+        .goodbye-sub { font-size: 0.8rem; color: #777; font-style: italic; }
+
         @media (max-width: 768px) {
             header { height: 50vh; }
+            header h1 { font-size: 2.8rem; }
             .day-header { padding: 15px; }
-            .step-img { height: 180px; }
+            .step-img { height: 160px; }
+            .date-num { font-size: 1.1rem; }
+            .date-box { min-width: 55px; }
         }
     </style>
 </head>
@@ -291,12 +354,13 @@
 <header>
     <div class="hero-bg-img"></div>
     <h1>Giappone 2026</h1>
-    <p>8 - 23 Gennaio | 4 Persone</p>
+    <p><i class="far fa-calendar-alt"></i> 8 - 23 Gennaio | 4 Persone</p>
 </header>
 
 <div class="sticky-nav">
-    <div class="nav-btn active" onclick="switchTab('itinerary')"><i class="fas fa-list-ul"></i> Itinerario</div>
+    <div class="nav-btn active" onclick="switchTab('itinerary')"><i class="fas fa-route"></i> Itinerario</div>
     <div class="nav-btn" onclick="switchTab('accommodations')"><i class="fas fa-bed"></i> Alloggi</div>
+    <div class="nav-btn" onclick="switchTab('sources')"><i class="fas fa-link"></i> Fonti</div>
 </div>
 
 <div class="container">
@@ -308,24 +372,24 @@
                 <div class="date-box"><span class="date-num">08</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
                     <h3>Arrivo a Osaka</h3>
-                    <div class="day-route"><i class="fas fa-plane"></i> KIX → Nishinari → Dotonbori</div>
+                    <div class="day-route"><i class="fas fa-plane-arrival"></i> KIX → Nishinari → Dotonbori</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
-                <div class="logistics"><i class="fas fa-train"></i> Nankai Airport Express per Shin-Imamiya (45 min, 930 JPY).</div>
+                <div class="logistics"><i class="fas fa-train"></i> Treno Nankai Line dall'aeroporto alla stazione Shin-Imamiya (~45 min, 930 JPY).</div>
                 <ul class="steps-list">
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-home"></i></div>
+                        <div class="step-icon"><i class="fas fa-luggage-cart"></i></div>
                         <span class="step-time">13:30</span>
                         <div class="step-title">Check-in Nishinari</div>
-                        <div class="step-desc">Sistemazione bagagli e riposo.</div>
+                        <div class="step-desc">Check-in alloggio e sistemazione bagagli.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-city"></i></div>
                         <span class="step-time">17:00</span>
-                        <div class="step-title">Dotonbori</div>
-                        <div class="step-desc">Passeggiata serale, luci al neon e Glico Man[cite: 12].</div>
+                        <div class="step-title">Dotonbori Neon Lights</div>
+                        <div class="step-desc">Spostamento a Dotonbori (2 fermate da Dobutsuen-mae a Namba). Passeggiata lungo il canale illuminato dai neon e foto con il Glico Man.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg')">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" class="step-img" alt="Dotonbori">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
@@ -335,7 +399,7 @@
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:00</span>
                         <div class="step-title">Cena: Chibo</div>
-                        [cite_start]<div class="step-desc">Okonomiyaki e Takoyaki (Budget ~2.500 JPY)[cite: 13].</div>
+                        <div class="step-desc">Takoyaki e Okonomiyaki da Chibo (Budget: ~2.500 JPY).</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -354,13 +418,13 @@
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
-                <div class="logistics"><i class="fas fa-subway"></i> Metro Chuo Line per Osakako.</div>
+                <div class="logistics"><i class="fas fa-subway"></i> Metro Midosuji fino a Hommachi, poi Chuo Line fino a Osakako.</div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-water"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Acquario Kaiyukan</div>
-                        [cite_start]<div class="step-desc">Famoso per lo squalo balena (2.700 JPY)[cite: 17].</div>
+                        <div class="step-desc">Famoso per lo squalo balena (2.700 JPY). Uno degli acquari più spettacolari al mondo.</div>
                         <div class="step-img-container" onclick="openLightbox('https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1648205341/osaka/H_00496_001')" style="margin-bottom: 10px;">
                             <img src="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1648205341/osaka/H_00496_001" class="step-img" alt="Kaiyukan Esterno">
                             <span class="img-hint"><i class="fas fa-expand"></i> Esterno</span>
@@ -373,8 +437,14 @@
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-broadcast-tower"></i></div>
                         <span class="step-time">14:00</span>
-                        <div class="step-title">Shinsekai</div>
-                        [cite_start]<div class="step-desc">Quartiere nostalgico e Torre Tsutenkaku[cite: 21].</div>
+                        <div class="step-title">Shinsekai & Tsutenkaku</div>
+                        <div class="step-desc">Visita al quartiere nostalgico Shinsekai e alla torre Tsutenkaku. Atmosfera retrò anni '50.</div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="step-time">18:00</span>
+                        <div class="step-title">Cena: Kushikatsu</div>
+                        <div class="step-desc">Spiedini fritti (Kushikatsu) di Kuroge Wagyu a Dotonbori.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -388,16 +458,17 @@
                 <div class="date-box"><span class="date-num">10</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
                     <h3>I Cervi Sacri di Nara</h3>
-                    <div class="day-route"><i class="fas fa-deer"></i> Escursione da Osaka</div>
+                    <div class="day-route"><i class="fas fa-torii-gate"></i> Nara Park → Todai-ji</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
-                [cite_start]<div class="logistics"><i class="fas fa-train"></i> JR Yamatoji Line (35 min)[cite: 25].</div>
+                <div class="logistics"><i class="fas fa-train"></i> Treno JR da Shin-Imamiya a JR Nara (~35 min).</div>
                 
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-lightbulb"></i> Lovina's Tip</div>
-                    <p>"The deer are everywhere... I suggest going to both Temple and Shrine first. Only if you have the time then head to the Park." - [cite_start]Kasuga Taisha: L'esterno è bellissimo e gratis[cite: 31].</p>
+                    <p>"I suggest going to both Temple and Shrine first. Only if you have the time then head to the Park."<br>
+                    <strong>Pranzo:</strong> Kakinoha-zushi (Sushi avvolto in foglie di cachi), specialità locale.</p>
                 </div>
 
                 <ul class="steps-list">
@@ -405,11 +476,17 @@
                         <div class="step-icon"><i class="fas fa-leaf"></i></div>
                         <span class="step-time">09:30</span>
                         <div class="step-title">Parco di Nara & Todai-ji</div>
-                        [cite_start]<div class="step-desc">Incontro con i cervi e Grande Buddha[cite: 28, 29].</div>
+                        <div class="step-desc">Incontro con i cervi liberi e visita al tempio del Grande Buddha.</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800')">
                             <img src="https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800" class="step-img" alt="Nara Deer">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-shrine"></i></div>
+                        <span class="step-time">11:30</span>
+                        <div class="step-title">Kasuga Taisha</div>
+                        <div class="step-desc">Il santuario delle lanterne. L'esterno è bellissimo e gratuito.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -428,11 +505,11 @@
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
-                <div class="logistics"><i class="fas fa-train"></i> Osaka → Kyoto (30 min). [cite_start]Bagagli a Toji[cite: 40].</div>
+                <div class="logistics"><i class="fas fa-train"></i> Osaka → Kyoto (30 min). Deposito bagagli/Check-in zona Toji.</div>
                 
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-lightbulb"></i> Lovina's Tip</div>
-                    <p>"If you are capable to walk... walk up the stairs... 12000 steps... the view is FANTASTIC. Also make sure you visit Senbon Torii." - A Gion: "Walk around Gion Shijyo".</p>
+                    <p>"If you are capable to walk... walk up the stairs... 12000 steps... the view is FANTASTIC. Also make sure you visit Senbon Torii."</p>
                 </div>
 
                 <ul class="steps-list">
@@ -440,7 +517,7 @@
                         <div class="step-icon"><i class="fas fa-torii-gate"></i></div>
                         <span class="step-time">13:00</span>
                         <div class="step-title">Fushimi Inari Taisha</div>
-                        [cite_start]<div class="step-desc">Mille torii rossi[cite: 43].</div>
+                        <div class="step-desc">Camminata attraverso i mille torii rossi. Linea JR Nara dalla stazione di Kyoto a Inari (5 min).</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800')">
                             <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800" class="step-img" alt="Fushimi Inari">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
@@ -450,7 +527,7 @@
                         <div class="step-icon"><i class="fas fa-fan"></i></div>
                         <span class="step-time">18:00</span>
                         <div class="step-title">Gion</div>
-                        [cite_start]<div class="step-desc">Quartiere delle Geisha[cite: 44].</div>
+                        <div class="step-desc">Autobus o Taxi verso il quartiere delle Geisha. Cena cucina Kaiseki o passeggiata notturna.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -471,20 +548,20 @@
             <div class="day-body">
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-lightbulb"></i> Lovina's Tip</div>
-                    <p>Pranzo consigliato: Yudofu (tofu caldo) ad Arashiyama. "Very good choice of lunch!".</p>
+                    <p>Pranzo consigliato: <strong>Yudofu</strong> (tofu caldo) ad Arashiyama. "Very good choice of lunch!".</p>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-star"></i></div>
                         <span class="step-time">09:00</span>
-                        <div class="step-title">Kinkaku-ji</div>
-                        [cite_start]<div class="step-desc">Padiglione d'Oro[cite: 52].</div>
+                        <div class="step-title">Kinkaku-ji (Padiglione d'Oro)</div>
+                        <div class="step-desc">Uno dei templi più iconici. Bus 101 o 205 dalla stazione. A seguire Ryoan-ji (giardino zen).</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
                         <span class="step-time">13:30</span>
                         <div class="step-title">Arashiyama</div>
-                        [cite_start]<div class="step-desc">Foresta di Bambù e Tempio Tenryu-ji[cite: 56].</div>
+                        <div class="step-desc">Foresta di Bambù, Tempio Tenryu-ji e passeggiata lungo il fiume.</div>
                         <div class="step-img-container" onclick="openLightbox('https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg')">
                             <img src="https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg" class="step-img" alt="Arashiyama Bamboo">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
@@ -502,21 +579,21 @@
                 <div class="date-box"><span class="date-num">13</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
                     <h3>Tradizione di Higashiyama</h3>
-                    <div class="day-route"><i class="fas fa-temple"></i> Kiyomizu-dera → Nishiki</div>
+                    <div class="day-route"><i class="fas fa-vihara"></i> Kiyomizu-dera → Nishiki</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-lightbulb"></i> Lovina's Tip</div>
-                    <p>"I highly recommend you eat the tradition kyoto sushi called saba-zushi". Consigliato anche Demachi Futaba e Ajyari mochi se c'è tempo. [cite_start]Usate il bus pass (700 JPY)[cite: 65].</p>
+                    <p>"I highly recommend you eat the tradition kyoto sushi called <strong>saba-zushi</strong> (marinated mackerel)".<br>Consigliato usare il bus pass (700 JPY).</p>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-mountain"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Kiyomizu-dera</div>
-                        [cite_start]<div class="step-desc">Tempio con terrazza panoramica[cite: 63].</div>
+                        <div class="step-desc">Tempio dell'Acqua Pura con terrazza panoramica. Passeggiata lungo Sannenzaka e Ninenzaka.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/6/61/Kiyomizu-dera_%2818199680391%29.jpg')">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Kiyomizu-dera_%2818199680391%29.jpg" class="step-img" alt="Kiyomizu-dera">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
@@ -526,7 +603,7 @@
                         <div class="step-icon"><i class="fas fa-shopping-basket"></i></div>
                         <span class="step-time">13:00</span>
                         <div class="step-title">Nishiki Market</div>
-                        [cite_start]<div class="step-desc">Street food e snack locali[cite: 67].</div>
+                        <div class="step-desc">Esplorazione gastronomica nel "ventre di Kyoto".</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -545,21 +622,27 @@
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
-                [cite_start]<div class="logistics">Stop a Himeji (bagagli in stazione)[cite: 70].</div>
+                <div class="logistics"><i class="fas fa-suitcase"></i> Treno per Himeji. Lasciare i bagagli negli armadietti (Coin Lockers) in stazione.</div>
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-lightbulb"></i> Lovina's Tip</div>
-                    <p>"Make sure you walk inside the castle... I would like to recommend Koko-en... right beside Himeiji Castle."</p>
+                    <p>"Make sure you walk inside the castle... I would like to recommend Koko-en Garden... right beside Himeiji Castle."</p>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-chess-rook"></i></div>
                         <span class="step-time">13:00</span>
                         <div class="step-title">Castello di Himeji</div>
-                        [cite_start]<div class="step-desc">Il castello dell'Airone Bianco, patrimonio UNESCO[cite: 71].</div>
+                        <div class="step-desc">Il castello dell'Airone Bianco, patrimonio UNESCO.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/330px-Ch%C3%A2teau_de_Himeji02.jpg')">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/330px-Ch%C3%A2teau_de_Himeji02.jpg" class="step-img" alt="Himeji Castle">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-train"></i></div>
+                        <span class="step-time">15:30</span>
+                        <div class="step-title">Verso Hiroshima</div>
+                        <div class="step-desc">Shinkansen da Himeji a Hiroshima (~1h 30min). Check-in e cena Okonomiyaki.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -583,13 +666,13 @@
                         <div class="step-icon"><i class="fas fa-monument"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Parco della Pace</div>
-                        [cite_start]<div class="step-desc">Museo della Pace e Cupola[cite: 80].</div>
+                        <div class="step-desc">Museo della Pace e Cupola della Bomba Atomica. Riflessione storica.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-ship"></i></div>
                         <span class="step-time">13:30</span>
                         <div class="step-title">Isola di Miyajima</div>
-                        [cite_start]<div class="step-desc">Traghetto e Torii galleggiante[cite: 82, 83].</div>
+                        <div class="step-desc">Treno JR Sanyo fino a Miyajimaguchi + Traghetto. Visita al Santuario Itsukushima e Torii galleggiante.</div>
                         <div class="step-img-container" onclick="openLightbox('https://www.watabi.it/blog/wp-content/uploads/2021/04/miyajima-copertina.jpg')">
                             <img src="https://www.watabi.it/blog/wp-content/uploads/2021/04/miyajima-copertina.jpg" class="step-img" alt="Miyajima">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
@@ -612,13 +695,19 @@
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
-                [cite_start]<div class="logistics">Shinkansen per Okayama (1h 20min)[cite: 88].</div>
+                <div class="logistics"><i class="fas fa-train"></i> Shinkansen per Okayama (1h 20min). Deposito bagagli in hotel.</div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
                         <span class="step-time">10:00</span>
                         <div class="step-title">Korakuen Garden</div>
-                        [cite_start]<div class="step-desc">Uno dei 3 giardini più belli del Giappone[cite: 91].</div>
+                        <div class="step-desc">Considerato uno dei 3 giardini più belli del Giappone.</div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-chess-rook"></i></div>
+                        <span class="step-time">12:00</span>
+                        <div class="step-title">Castello di Okayama</div>
+                        <div class="step-desc">Il "Castello del Corvo" (nero). Pranzo con Kibi Dango (dolce locale).</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -637,6 +726,7 @@
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
+                <div class="logistics"><i class="fas fa-train"></i> Shinkansen Nozomi Okayama-Tokyo. Check-in Oshiage (Skytree).</div>
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-lightbulb"></i> Lovina's Tip</div>
                     <p>Per Yakitori: "I recommend to go to a Izakaya in Japan instead... search Izakaya on google map or use TABELOG".</p>
@@ -646,7 +736,7 @@
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
                         <span class="step-time">14:00</span>
                         <div class="step-title">Shinjuku Gyoen & Harajuku</div>
-                        [cite_start]<div class="step-desc">Relax e cultura pop[cite: 104, 105].</div>
+                        <div class="step-desc">Relax al parco e visita al Santuario Meiji Jingu. Passeggiata nella via pop Takeshita Dori.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -674,11 +764,17 @@
                         <div class="step-icon"><i class="fas fa-vihara"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Senso-ji</div>
-                        [cite_start]<div class="step-desc">Il tempio più antico di Tokyo[cite: 109].</div>
+                        <div class="step-desc">Il tempio più antico di Tokyo, famoso per la lanterna rossa gigante.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg')">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg" class="step-img" alt="Senso-ji">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-store"></i></div>
+                        <span class="step-time">13:00</span>
+                        <div class="step-title">Ueno & Ameyoko</div>
+                        <div class="step-desc">Parco di Ueno e il vibrante mercato di Ameyoko.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -701,22 +797,28 @@
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-heart"></i></div>
                         <span class="step-time">09:00</span>
-                        <div class="step-title">Imado Shrine</div>
-                        [cite_start]<div class="step-desc">Maneki Neko di coppia[cite: 116].</div>
+                        <div class="step-title">Imado Shrine & Yanaka</div>
+                        <div class="step-desc">Santuario del Maneki Neko "di coppia" (Asakusa). Poi Yanaka Ginza (Città dei Gatti).</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-paw"></i></div>
                         <span class="step-time">14:30</span>
                         <div class="step-title">Tempio Gotoku-ji</div>
-                        [cite_start]<div class="step-desc">Tempio dei mille gatti bianchi[cite: 121].</div>
+                        <div class="step-desc">Il leggendario tempio dei mille gatti bianchi. Timbro commemorativo alla stazione.</div>
                         <div class="step-img-container" onclick="openLightbox('https://matteoingiappone.s3.eu-central-1.amazonaws.com/wp-content/uploads/2020/07/Gotokuji-1.jpg')">
                             <img src="https://matteoingiappone.s3.eu-central-1.amazonaws.com/wp-content/uploads/2020/07/Gotokuji-1.jpg" class="step-img" alt="Gotokuji">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-birthday-cake"></i></div>
+                        <span class="step-time">19:00</span>
+                        <div class="step-title">Cena: Kushiyaki Bistro Fukumimi</div>
+                        <div class="step-desc">Izakaya vivace a Shinjuku. Prima, visita al Gatto Gigante 3D (Uscita Est).</div>
+                    </li>
                 </ul>
                 <div class="action-area">
-                    <a href="https://www.google.com/maps/dir/Imado+Shrine/Yanaka+Ginza/Nyankodo/Gotokuji+Temple/Cross+Shinjuku+Vision/Kushiyaki+Bistro+Fukumimi+Shinjuku" target="_blank" class="btn-map" style="background: var(--cat); color: white;"><i class="fas fa-map-marked-alt"></i> Mappa Compleanno</a>
+                    <a href="https://www.google.com/maps/dir/Imado+Shrine/Yanaka+Ginza/Nyankodo/Gotokuji+Temple/Cross+Shinjuku+Vision/Kushiyaki+Bistro+Fukumimi+Shinjuku" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i> Mappa Compleanno</a>
                 </div>
             </div>
         </div>
@@ -742,7 +844,8 @@
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-ticket-alt"></i></div>
                         <span class="step-time">FULL DAY</span>
-                        <div class="step-title">Tour Klook</div>
+                        <div class="step-title">Tour Organizzato</div>
+                        <div class="step-desc">Giornata relax gestita dal tour operator. Assicuratevi di avere acqua e batteria per le foto!</div>
                         <a href="https://www.klook.com/en-US/activity/93901-mtfuji-one-day-tour-tokyo/" target="_blank" class="btn-klook">Vedi Tour su Klook</a>
                     </li>
                 </ul>
@@ -764,24 +867,30 @@
             <div class="day-body">
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-lightbulb"></i> Lovina's Tip</div>
-                    <p>"I highly suggest to try Kaisen don... at Tsukiji".</p>
+                    <p>"I highly suggest to try <strong>Kaisen don</strong>... at Tsukiji".</p>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-fish"></i></div>
                         <span class="step-time">08:30</span>
                         <div class="step-title">Tsukiji Outer Market</div>
-                        [cite_start]<div class="step-desc">Colazione con sushi freschissimo[cite: 135].</div>
+                        <div class="step-desc">Colazione con sushi freschissimo. Poi passeggiata fino a Ginza.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-lightbulb"></i></div>
                         <span class="step-time">13:00</span>
                         <div class="step-title">teamLab Borderless</div>
-                        [cite_start]<div class="step-desc">Arte digitale immersiva[cite: 137].</div>
+                        <div class="step-desc">Arte digitale immersiva (Azabudai Hills). Prenotazione obbligatoria mesi prima!</div>
                         <div class="step-img-container" onclick="openLightbox('https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/dmyoapohHQXx7nQ5dQwjad/width=3840,quality=80')">
                             <img src="https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/dmyoapohHQXx7nQ5dQwjad/width=3840,quality=80" class="step-img" alt="TeamLab">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-robot"></i></div>
+                        <span class="step-time">15:00</span>
+                        <div class="step-title">Odaiba</div>
+                        <div class="step-desc">Monorotaia panoramica, Isola artificiale e Gundam gigante.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -805,13 +914,13 @@
                         <div class="step-icon"><i class="fas fa-user-friends"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Shibuya Crossing</div>
-                        [cite_start]<div class="step-desc">Hachiko e l'incrocio più famoso[cite: 143].</div>
+                        <div class="step-desc">Foto con la statua di Hachiko e attraversamento dell'incrocio più famoso del mondo.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-shopping-bag"></i></div>
                         <span class="step-time">14:00</span>
                         <div class="step-title">Shopping & Daikanyama</div>
-                        [cite_start]<div class="step-desc">Don Quijote e relax finale[cite: 145].</div>
+                        <div class="step-desc">Acquisti finali (Don Quijote, LOFT) e relax nel quartiere chic di Daikanyama.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -825,19 +934,38 @@
                 <div class="date-box"><span class="date-num">23</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
                     <h3>Rientro</h3>
-                    <div class="day-route"><i class="fas fa-plane"></i> Sayonara</div>
+                    <div class="day-route"><i class="fas fa-plane-departure"></i> Sayonara</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
-                <div class="logistics">Treno diretto da Oshiage per Aeroporto. [cite_start]Volo 09:05[cite: 149, 151].</div>
+                <div class="logistics">
+                    <i class="fas fa-subway"></i> <strong>06:00</strong> - Treno diretto da Oshiage per Aeroporto.<br>
+                    (Narita ~56 min / Haneda ~37 min).<br>
+                    <i class="fas fa-plane"></i> <strong>09:05</strong> - Decollo previsto.
+                </div>
+
+                <div class="local-tip">
+                    <div class="local-tip-title"><i class="fas fa-mug-hot"></i> Last Breakfast</div>
+                    <p>Prima di salire sul treno, fermatevi al <strong>Konbini (7-Eleven/FamilyMart)</strong> per l'ultimo <em>Onigiri</em> al tonno e maionese e un caffè caldo. È il saluto più autentico al Giappone!</p>
+                </div>
+
+                <hr class="divider-line">
+                
                 <div class="action-area">
                     <a href="https://www.google.com/maps/dir/Oshiage+Station/Narita+Airport+Terminal+1" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i> Mappa Giorno 16</a>
+                </div>
+
+                <div class="goodbye-section">
+                    <p class="jp-font goodbye-jp">日本、またね！</p>
+                    <p class="goodbye-sub">"Nihon, mata ne!" - (Giappone, ci vediamo presto!)</p>
                 </div>
             </div>
         </div>
 
-    </div> <div id="accommodations">
+    </div> 
+    
+    <div id="accommodations">
         <h2 style="text-align: center; margin-bottom: 30px; font-family:'Montserrat'; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">I Vostri Alloggi</h2>
         <div class="hotel-grid">
             
@@ -847,7 +975,7 @@
                 </div>
                 <div class="hotel-info">
                     <h3>Nishinari Airbnb</h3>
-                    [cite_start]<p class="hotel-meta"><i class="far fa-calendar-alt"></i> 8-11 Gen (3 notti) [cite: 11]</p>
+                    <p class="hotel-meta"><i class="far fa-calendar-alt"></i> 8-11 Gen (3 notti)</p>
                     <a href="https://www.airbnb.it/rooms/908627543871468484" target="_blank" class="btn-book">Vedi Prenotazione</a>
                 </div>
             </div>
@@ -858,7 +986,7 @@
                 </div>
                 <div class="hotel-info">
                     <h3>Toji Station Airbnb</h3>
-                    [cite_start]<p class="hotel-meta"><i class="far fa-calendar-alt"></i> 11-14 Gen (3 notti) [cite: 40]</p>
+                    <p class="hotel-meta"><i class="far fa-calendar-alt"></i> 11-14 Gen (3 notti)</p>
                     <a href="https://www.airbnb.it/rooms/1358924023594041094" target="_blank" class="btn-book">Vedi Prenotazione</a>
                 </div>
             </div>
@@ -869,7 +997,7 @@
                 </div>
                 <div class="hotel-info">
                     <h3>Peace Park Airbnb</h3>
-                    [cite_start]<p class="hotel-meta"><i class="far fa-calendar-alt"></i> 14-16 Gen (2 notti) [cite: 73]</p>
+                    <p class="hotel-meta"><i class="far fa-calendar-alt"></i> 14-16 Gen (2 notti)</p>
                     <a href="https://www.airbnb.it/rooms/43069359" target="_blank" class="btn-book">Vedi Prenotazione</a>
                 </div>
             </div>
@@ -880,7 +1008,7 @@
                 </div>
                 <div class="hotel-info">
                     <h3>Hotel Via Inn</h3>
-                    [cite_start]<p class="hotel-meta"><i class="far fa-calendar-alt"></i> 16-17 Gen (1 notte) [cite: 88]</p>
+                    <p class="hotel-meta"><i class="far fa-calendar-alt"></i> 16-17 Gen (1 notte)</p>
                     <a href="https://reserve.viainn.com/booking/result" target="_blank" class="btn-book">Vedi Hotel</a>
                 </div>
             </div>
@@ -891,12 +1019,33 @@
                 </div>
                 <div class="hotel-info">
                     <h3>Oshiage Airbnb</h3>
-                    [cite_start]<p class="hotel-meta"><i class="far fa-calendar-alt"></i> 17-23 Gen (6 notti) [cite: 101]</p>
+                    <p class="hotel-meta"><i class="far fa-calendar-alt"></i> 17-23 Gen (6 notti)</p>
                     <a href="https://www.airbnb.it/rooms/39375538" target="_blank" class="btn-book">Vedi Prenotazione</a>
                 </div>
             </div>
 
         </div>
+    </div>
+
+    <div id="sources">
+        <h2 style="text-align: center; margin-bottom: 30px; font-family:'Montserrat'; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Fonti Immagini</h2>
+        <ul class="sources-list">
+            <li><strong>Copertina Principale:</strong> <a href="https://github.com/Evoluti0N11/giappone2026/blob/main/Giappone-immagine-principale.jpg?raw=true" target="_blank">GitHub Repository</a></li>
+            <li><strong>Sfondo Pagina:</strong> <a href="https://github.com/Evoluti0N11/giappone2026/blob/main/a6e6bd_bb276caf5b3c49c1826275fa66e45385~mv2.jpg?raw=true" target="_blank">GitHub Repository (Pattern)</a></li>
+            <li><strong>Dotonbori (Wikimedia):</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>Kaiyukan Esterno (JNTO):</strong> <a href="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1648205341/osaka/H_00496_001" target="_blank">Link Immagine</a></li>
+            <li><strong>Kaiyukan Interno (Klook):</strong> <a href="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_2860,h_1906/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/hhdp9n7ww2yltm73opvb/AcquistaonlineilbigliettoperlAcquarioKaiyukandiOsaka-KlookStatiUniti.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>Cervi di Nara (Unsplash):</strong> <a href="https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800" target="_blank">Link Immagine</a></li>
+            <li><strong>Fushimi Inari (Unsplash):</strong> <a href="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800" target="_blank">Link Immagine</a></li>
+            <li><strong>Arashiyama Bamboo (SmugMug):</strong> <a href="https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>Kiyomizu-dera (Wikimedia):</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/6/61/Kiyomizu-dera_%2818199680391%29.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>Himeji Castle (Wikimedia):</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/330px-Ch%C3%A2teau_de_Himeji02.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>Miyajima (Watabi):</strong> <a href="https://www.watabi.it/blog/wp-content/uploads/2021/04/miyajima-copertina.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>Senso-ji (Wikimedia):</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>Gotokuji (MatteoInGiappone):</strong> <a href="https://matteoingiappone.s3.eu-central-1.amazonaws.com/wp-content/uploads/2020/07/Gotokuji-1.jpg" target="_blank">Link Immagine</a></li>
+            <li><strong>TeamLab Borderless:</strong> <a href="https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/dmyoapohHQXx7nQ5dQwjad/width=3840,quality=80" target="_blank">Link Immagine</a></li>
+            <li><strong>Hotel Images:</strong> Advantour, JapanSpecialist, JNTO, Unsplash.</li>
+        </ul>
     </div>
 
 </div>
@@ -916,13 +1065,21 @@
 
     // TAB FUNCTION
     function switchTab(tabId) {
+        // Hide all tabs
         document.getElementById('itinerary').style.display = 'none';
         document.getElementById('accommodations').style.display = 'none';
+        document.getElementById('sources').style.display = 'none';
+        
+        // Remove active class from all buttons
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         
+        // Show selected tab
         document.getElementById(tabId).style.display = 'block';
-        const btnIndex = (tabId === 'itinerary') ? 0 : 1;
-        document.querySelectorAll('.nav-btn')[btnIndex].classList.add('active');
+        
+        // Activate correct button
+        if(tabId === 'itinerary') document.querySelectorAll('.nav-btn')[0].classList.add('active');
+        if(tabId === 'accommodations') document.querySelectorAll('.nav-btn')[1].classList.add('active');
+        if(tabId === 'sources') document.querySelectorAll('.nav-btn')[2].classList.add('active');
         
         window.scrollTo(0, 0);
     }
@@ -930,13 +1087,20 @@
     // CARD ACCORDION
     function toggleCard(header) {
         const card = header.parentElement;
-        card.classList.toggle('active');
-        if(card.classList.contains('active')) {
-             setTimeout(() => {
+        const wasActive = card.classList.contains('active');
+        
+        // Optional: Close others
+        // document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+        
+        if(!wasActive) {
+            card.classList.add('active');
+            setTimeout(() => {
                 const yOffset = -100; 
                 const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({top: y, behavior: 'smooth'});
             }, 300);
+        } else {
+            card.classList.remove('active');
         }
     }
 </script>
