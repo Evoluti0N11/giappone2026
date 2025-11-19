@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giappone 2026 | Master Plan</title>
+    <title>Giappone 2026 | Itinerario Completo</title>
+    
+    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/Evoluti0N11/giappone2026/main/Giappone-immagine-principale.jpg">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #BC002D; /* Japan Red */
+            --primary: #BC002D; /* Rosso Giappone */
             --dark: #2c3e50;
             --light: #f8f9fa;
-            --cat: #e67e22; /* Orange for Cat Day */
-            --accent: #d4af37; /* Gold */
+            --cat: #e67e22; /* Arancione per il Cat Day */
+            --accent: #d4af37; /* Oro */
             --text-gray: #636e72;
             --shadow: 0 10px 30px rgba(0,0,0,0.1);
             --radius: 12px;
@@ -24,44 +28,48 @@
 
         /* HERO HEADER */
         header {
-            background: linear-gradient(135deg, var(--primary), #8e001f);
+            /* Usa la tua immagine come sfondo con un filtro scuro per leggere il testo */
+            background: linear-gradient(rgba(188, 0, 45, 0.8), rgba(44, 62, 80, 0.9)), url('https://raw.githubusercontent.com/Evoluti0N11/giappone2026/main/Giappone-immagine-principale.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        header h1 { font-size: 1.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
-        header p { font-size: 0.9rem; opacity: 0.9; }
+        header h1 { font-size: 1.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        header p { font-size: 0.95rem; opacity: 1; font-weight: 500; }
 
         /* NAVIGATION TABS */
         .nav-tabs {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         .nav-btn {
             background: rgba(255,255,255,0.2);
             border: 1px solid rgba(255,255,255,0.4);
             color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 10px 25px;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
             font-size: 0.9rem;
+            backdrop-filter: blur(5px);
         }
-        .nav-btn.active { background: white; color: var(--primary); }
+        .nav-btn.active { background: white; color: var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
         /* CONTAINER */
         .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
 
         /* TIMELINE STRUCTURE */
         .timeline { position: relative; margin-top: 40px; }
-        /* Vertical Line (Desktop only) */
+        /* Linea Verticale (Solo Desktop) */
         .timeline::before {
             content: '';
             position: absolute;
@@ -71,7 +79,7 @@
             width: 4px;
             background: #e0e0e0;
             transform: translateX(-50%);
-            display: none; /* Hidden on mobile by default */
+            display: none;
         }
 
         @media (min-width: 768px) {
@@ -88,19 +96,19 @@
             cursor: pointer;
             overflow: hidden;
             transition: transform 0.3s;
-            border-left: 5px solid var(--primary);
+            border-left: 6px solid var(--primary);
         }
         .day-card:hover { transform: translateY(-3px); }
         
         .day-card.special-cat { border-left-color: var(--cat); }
 
-        /* Desktop Layout Alternation */
+        /* Layout Desktop Alternato */
         @media (min-width: 768px) {
             .day-card { width: 46%; margin-left: 0; }
             .day-card:nth-child(odd) { margin-right: auto; }
             .day-card:nth-child(even) { margin-left: auto; }
             
-            /* Timeline Dots */
+            /* Pallini Timeline */
             .day-card::after {
                 content: '';
                 position: absolute;
@@ -128,19 +136,19 @@
         .date-badge {
             background: #f0f0f0;
             padding: 10px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
-            min-width: 60px;
+            min-width: 65px;
             margin-right: 15px;
         }
-        .date-num { display: block; font-size: 1.4rem; font-weight: 800; color: var(--dark); line-height: 1; }
-        .date-month { font-size: 0.7rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600; }
+        .date-num { display: block; font-size: 1.5rem; font-weight: 800; color: var(--dark); line-height: 1; }
+        .date-month { font-size: 0.75rem; text-transform: uppercase; color: var(--text-gray); font-weight: 700; }
 
         .day-info { flex-grow: 1; }
-        .day-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: var(--dark); }
-        .day-route { font-size: 0.85rem; color: var(--text-gray); display: flex; align-items: center; gap: 6px; }
+        .day-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 5px; color: var(--dark); }
+        .day-route { font-size: 0.9rem; color: var(--text-gray); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;}
         
-        .toggle-icon { color: #ccc; transition: 0.3s; }
+        .toggle-icon { color: #ccc; transition: 0.3s; font-size: 1.2rem; }
         .day-card.active .toggle-icon { transform: rotate(180deg); color: var(--primary); }
 
         /* CARD BODY (EXPANDABLE) */
@@ -172,12 +180,12 @@
         }
         .step:last-child { margin-bottom: 0; }
         
-        /* Connecting line inside */
+        /* Linea di connessione interna */
         .step:not(:last-child)::before {
             content: '';
             position: absolute;
-            left: 24px; /* Center of icon */
-            top: 40px;
+            left: 24px; 
+            top: 45px;
             bottom: -20px;
             width: 2px;
             background: #e0e0e0;
@@ -197,37 +205,41 @@
             margin-right: 15px;
             flex-shrink: 0;
             z-index: 1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         
         .step-content { flex-grow: 1; }
         .step-time { font-size: 0.8rem; font-weight: 700; color: var(--primary); margin-bottom: 3px; display: block; }
-        .step-name { font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
-        .step-desc { font-size: 0.9rem; color: #555; margin-bottom: 10px; line-height: 1.5; }
+        .step-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 5px; }
+        .step-desc { font-size: 0.95rem; color: #555; margin-bottom: 10px; line-height: 1.6; }
         .step-img {
             width: 100%;
-            height: 150px;
+            height: 200px; /* Altezza fissa per uniformità */
             object-fit: cover;
             border-radius: 8px;
-            margin-top: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: #eee; /* Placeholder color */
         }
 
         /* MAP BUTTON */
-        .map-container { padding: 0 20px 20px; }
+        .map-container { padding: 0 20px 25px; }
         .btn-map {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            background: #1a73e8; /* Google Blue */
+            background: #4285F4; /* Google Blue */
             color: white;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             transition: background 0.2s;
+            box-shadow: 0 4px 6px rgba(66, 133, 244, 0.2);
         }
-        .btn-map:hover { background: #1557b0; }
+        .btn-map:hover { background: #3367d6; transform: translateY(-2px); }
+        .btn-map i { margin-right: 10px; font-size: 1.1rem; }
 
         /* ACCOMMODATION SECTION */
         #accommodations { display: none; }
@@ -243,36 +255,40 @@
             box-shadow: var(--shadow);
         }
         .hotel-img {
-            height: 180px;
-            background: #ddd;
+            height: 200px;
+            background-color: #ddd;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2rem;
             color: white;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
             background-size: cover;
             background-position: center;
         }
         .hotel-info { padding: 20px; }
-        .hotel-city { text-transform: uppercase; font-size: 0.8rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
-        .hotel-name { font-size: 1.2rem; font-weight: 700; margin: 5px 0; }
-        .hotel-meta { color: #666; font-size: 0.9rem; margin-bottom: 15px; }
+        .hotel-city { text-transform: uppercase; font-size: 0.8rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
+        .hotel-name { font-size: 1.3rem; font-weight: 700; margin: 8px 0; }
+        .hotel-meta { color: #666; font-size: 0.95rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .btn-book {
             display: block;
             text-align: center;
             background: var(--dark);
             color: white;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 12px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s;
         }
+        .btn-book:hover { background: black; }
 
         /* ANIMATIONS */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* UTILS */
-        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-right: 5px; }
+        .tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-right: 5px; vertical-align: middle; }
         .tag-green { background: #e8f5e9; color: #2e7d32; }
         .tag-yellow { background: #fff3e0; color: #ef6c00; }
 
@@ -282,11 +298,11 @@
 
 <header>
     <h1>Giappone 2026</h1>
-    <p>8 - 23 Gennaio | 4 Persone</p>
+    <p>8 - 23 Gennaio | Itinerario Completo 4 Persone</p>
     
     <div class="nav-tabs">
-        <div class="nav-btn active" onclick="showTab('itinerary')">ITINERARIO</div>
-        <div class="nav-btn" onclick="showTab('accommodations')">ALLOGGI</div>
+        <div class="nav-btn active" onclick="showTab('itinerary')"><i class="fas fa-map-signs"></i> ITINERARIO</div>
+        <div class="nav-btn" onclick="showTab('accommodations')"><i class="fas fa-bed"></i> ALLOGGI</div>
     </div>
 </header>
 
@@ -326,8 +342,8 @@
                         <div class="step-content">
                             <span class="step-time">17:00</span>
                             <div class="step-name">Dotonbori</div>
-                            <p class="step-desc">Il cuore di Osaka. Foto obbligatoria al "Glico Man" sul ponte.</p>
-                            <img src="https://images.unsplash.com/photo-1590559899731-a363c7419363?w=600" class="step-img">
+                            <p class="step-desc">Il cuore di Osaka. Foto obbligatoria al "Glico Man" sul ponte e luci al neon.</p>
+                            <img src="https://images.unsplash.com/photo-1590559899731-a363c7419363?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Dotonbori">
                         </div>
                     </li>
                     <li class="step">
@@ -340,7 +356,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Kansai+International+Airport/Shin-Imamiya+Station/Dotonbori,+Chuo+Ward,+Osaka/Chibo+Okonomiyaki" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 1</a>
+                    <a href="https://www.google.com/maps/dir/Kansai+International+Airport/Shin-Imamiya+Station/Dotonbori,+Chuo+Ward,+Osaka/Chibo+Okonomiyaki" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 1</a>
                 </div>
             </div>
         </div>
@@ -370,7 +386,7 @@
                             <span class="step-time">09:00 - 13:00</span>
                             <div class="step-name">Acquario Kaiyukan</div>
                             <p class="step-desc">Famoso per lo squalo balena. Ingresso: 2.700 JPY.</p>
-                            <img src="https://images.unsplash.com/photo-1550287634-29c00cc41cc7?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1550287634-29c00cc41cc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Kaiyukan">
                         </div>
                     </li>
                     <li class="step">
@@ -381,17 +397,9 @@
                             <p class="step-desc">Quartiere dall'atmosfera anni '50. Perfetto per il pranzo (Kushikatsu).</p>
                         </div>
                     </li>
-                    <li class="step">
-                        <div class="step-icon"><i class="fas fa-palette"></i></div>
-                        <div class="step-content">
-                            <span class="step-time">16:00</span>
-                            <div class="step-name">Nakazakicho</div>
-                            <p class="step-desc">Quartiere bohémien con caffè hipster in vecchie case tradizionali.</p>
-                        </div>
-                    </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Osaka+Aquarium+Kaiyukan/Tsutenkaku/Nakazakicho,+Kita+Ward,+Osaka/Kushikatsu+Daruma+Dotonbori" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 2</a>
+                    <a href="https://www.google.com/maps/dir/Osaka+Aquarium+Kaiyukan/Tsutenkaku/Nakazakicho,+Kita+Ward,+Osaka/Kushikatsu+Daruma+Dotonbori" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 2</a>
                 </div>
             </div>
         </div>
@@ -421,28 +429,20 @@
                             <span class="step-time">09:30</span>
                             <div class="step-name">Parco di Nara</div>
                             <p class="step-desc">Incontro con i cervi sacri liberi. Attenzione ai crackers!</p>
-                            <img src="https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Nara Deer">
                         </div>
                     </li>
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-gopuram"></i></div>
+                        <div class="step-icon"><i class="fas fa-vihara"></i></div>
                         <div class="step-content">
                             <span class="step-time">11:00</span>
                             <div class="step-name">Todai-ji</div>
                             <p class="step-desc">Tempio del Grande Buddha (Daibutsu). Ingresso: 600 JPY.</p>
                         </div>
                     </li>
-                    <li class="step">
-                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
-                        <div class="step-content">
-                            <span class="step-time">13:00</span>
-                            <div class="step-name">Pranzo: Kakinoha-zushi</div>
-                            <p class="step-desc">Specialità locale: sushi avvolto in foglie di cachi.</p>
-                        </div>
-                    </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/JR+Nara+Station/Nara+Park/Todai-ji/Kasuga+Taisha/Naramachi/Kushikatsu+Daruma+Shinsekai" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 3</a>
+                    <a href="https://www.google.com/maps/dir/JR+Nara+Station/Nara+Park/Todai-ji/Kasuga+Taisha/Naramachi/Kushikatsu+Daruma+Shinsekai" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 3</a>
                 </div>
             </div>
         </div>
@@ -472,7 +472,7 @@
                             <span class="step-time">13:00</span>
                             <div class="step-name">Fushimi Inari Taisha</div>
                             <p class="step-desc">Il famoso tunnel di torii rossi. Linea JR Nara fino a stazione Inari (5 min da Kyoto St.).</p>
-                            <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Fushimi Inari">
                         </div>
                     </li>
                     <li class="step">
@@ -485,7 +485,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Kyoto+Station/Toji+Station/Kyoto+Ramen+Street/Fushimi+Inari+Taisha/Gion+Karyo" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 4</a>
+                    <a href="https://www.google.com/maps/dir/Kyoto+Station/Toji+Station/Kyoto+Ramen+Street/Fushimi+Inari+Taisha/Gion+Karyo" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 4</a>
                 </div>
             </div>
         </div>
@@ -523,12 +523,12 @@
                             <span class="step-time">13:30</span>
                             <div class="step-name">Arashiyama (Bamboo Forest)</div>
                             <p class="step-desc">Passeggiata nella foresta di bambù e tempio Tenryu-ji. Pranzo: Yudofu (tofu caldo).</p>
-                            <img src="https://images.unsplash.com/photo-1580039074537-b92d444db75e?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1580039074537-b92d444db75e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Bamboo Forest">
                         </div>
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Kinkaku-ji/Ryoan-ji/Arashiyama+Bamboo+Forest/Tenryu-ji/Pontocho+Park" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 5</a>
+                    <a href="https://www.google.com/maps/dir/Kinkaku-ji/Ryoan-ji/Arashiyama+Bamboo+Forest/Tenryu-ji/Pontocho+Park" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 5</a>
                 </div>
             </div>
         </div>
@@ -541,7 +541,7 @@
                 </div>
                 <div class="day-info">
                     <div class="day-title">Kyoto Est & Mercati</div>
-                    <div class="day-route"><i class="fas fa-temple"></i> Kiyomizu → Nishiki</div>
+                    <div class="day-route"><i class="fas fa-vihara"></i> Kiyomizu → Nishiki</div>
                 </div>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
@@ -565,7 +565,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Kiyomizu-dera/Sannenzaka/Ninenzaka/To-ji+Temple/Nishiki+Market" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 6</a>
+                    <a href="https://www.google.com/maps/dir/Kiyomizu-dera/Sannenzaka/Ninenzaka/To-ji+Temple/Nishiki+Market" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 6</a>
                 </div>
             </div>
         </div>
@@ -595,7 +595,7 @@
                             <span class="step-time">13:00</span>
                             <div class="step-name">Castello di Himeji</div>
                             <p class="step-desc">"L'Airone Bianco", patrimonio UNESCO originale (non ricostruito).</p>
-                            <img src="https://images.unsplash.com/photo-1603640772524-757810f7e256?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1603640772524-757810f7e256?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Himeji Castle">
                         </div>
                     </li>
                     <li class="step">
@@ -608,7 +608,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Kyoto+Station/Himeji+Station/Himeji+Castle/Hiroshima+Station/Okonomiyaki+Nagata-ya" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 7</a>
+                    <a href="https://www.google.com/maps/dir/Kyoto+Station/Himeji+Station/Himeji+Castle/Hiroshima+Station/Okonomiyaki+Nagata-ya" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 7</a>
                 </div>
             </div>
         </div>
@@ -641,12 +641,12 @@
                             <span class="step-time">13:30</span>
                             <div class="step-name">Isola di Miyajima</div>
                             <p class="step-desc">Treno JR per Miyajimaguchi + Traghetto. Visita al Santuario Itsukushima (Torii nel mare).</p>
-                            <img src="https://images.unsplash.com/photo-1545558833-615458136291?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1545558833-615458136291?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Miyajima Torii">
                         </div>
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Hiroshima+Peace+Memorial+Museum/Atomic+Bomb+Dome/Miyajimaguchi+Station/Itsukushima+Jinfa/Hiroshima+Station" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 8</a>
+                    <a href="https://www.google.com/maps/dir/Hiroshima+Peace+Memorial+Museum/Atomic+Bomb+Dome/Miyajimaguchi+Station/Itsukushima+Jinfa/Hiroshima+Station" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 8</a>
                 </div>
             </div>
         </div>
@@ -679,7 +679,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Hiroshima+Station/Okayama+Station/Okayama+Korakuen/Okayama+Castle" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 9</a>
+                    <a href="https://www.google.com/maps/dir/Hiroshima+Station/Okayama+Station/Okayama+Korakuen/Okayama+Castle" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 9</a>
                 </div>
             </div>
         </div>
@@ -721,7 +721,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Okayama+Station/Tokyo+Station/Oshiage+Station/Shinjuku+Gyoen+National+Garden/Meiji+Jingu/Takeshita+Street/Torikizoku+Shinjuku" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 10</a>
+                    <a href="https://www.google.com/maps/dir/Okayama+Station/Tokyo+Station/Oshiage+Station/Shinjuku+Gyoen+National+Garden/Meiji+Jingu/Takeshita+Street/Torikizoku+Shinjuku" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 10</a>
                 </div>
             </div>
         </div>
@@ -741,12 +741,12 @@
             <div class="day-body">
                 <ul class="steps-list">
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-gopuram"></i></div>
+                        <div class="step-icon"><i class="fas fa-vihara"></i></div>
                         <div class="step-content">
                             <span class="step-time">09:00</span>
                             <div class="step-name">Senso-ji (Asakusa)</div>
                             <p class="step-desc">Il tempio più antico di Tokyo (a 3 min metro dall'alloggio). Pranzo Tempura in zona.</p>
-                            <img src="https://images.unsplash.com/photo-1565627053643-90c3387807f7?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1565627053643-90c3387807f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Asakusa">
                         </div>
                     </li>
                     <li class="step">
@@ -759,7 +759,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Oshiage+Station/Senso-ji/Ueno+Park/Ameyoko+Shopping+District/Golden+Gai" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 11</a>
+                    <a href="https://www.google.com/maps/dir/Oshiage+Station/Senso-ji/Ueno+Park/Ameyoko+Shopping+District/Golden+Gai" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 11</a>
                 </div>
             </div>
         </div>
@@ -807,12 +807,12 @@
                         </div>
                     </li>
                     <li class="step">
-                        <div class="step-icon" style="border-color: var(--cat); color: var(--cat);"><i class="fas fa-temple"></i></div>
+                        <div class="step-icon" style="border-color: var(--cat); color: var(--cat);"><i class="fas fa-vihara"></i></div>
                         <div class="step-content">
                             <span class="step-time">14:30</span>
                             <div class="step-name">Tempio Gotoku-ji</div>
                             <p class="step-desc">Arrivo con tram Setagaya. Migliaia di statue di gatti bianchi. (Timbro stazione!)</p>
-                            <img src="https://images.unsplash.com/photo-1583361704493-70783ac94547?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1583361704493-70783ac94547?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Gotokuji Temple">
                         </div>
                     </li>
                     <li class="step">
@@ -825,7 +825,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Imado+Shrine/Yanaka+Ginza/Nyankodo/Gotokuji+Temple/Cross+Shinjuku+Vision/Kushiyaki+Bistro+Fukumimi+Shinjuku" target="_blank" class="btn-map" style="background: var(--cat);"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Compleanno</a>
+                    <a href="https://www.google.com/maps/dir/Imado+Shrine/Yanaka+Ginza/Nyankodo/Gotokuji+Temple/Cross+Shinjuku+Vision/Kushiyaki+Bistro+Fukumimi+Shinjuku" target="_blank" class="btn-map" style="background: var(--cat);"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Compleanno</a>
                 </div>
             </div>
         </div>
@@ -862,12 +862,12 @@
                             <span class="step-time">13:00</span>
                             <div class="step-name">Lago Ashi</div>
                             <p class="step-desc">Crociera sulla nave pirata con vista (si spera) sul Monte Fuji.</p>
-                            <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Hakone Fuji">
                         </div>
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Shinjuku+Station/Hakone-Yumoto+Station/Owakudani/Lake+Ashi/Hakone+Shrine" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 13</a>
+                    <a href="https://www.google.com/maps/dir/Shinjuku+Station/Hakone-Yumoto+Station/Owakudani/Lake+Ashi/Hakone+Shrine" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 13</a>
                 </div>
             </div>
         </div>
@@ -912,12 +912,12 @@
                             <span class="step-time">16:00</span>
                             <div class="step-name">Odaiba (Gundam)</div>
                             <p class="step-desc">Isola artificiale. Statua Gundam gigante e tramonto sulla baia.</p>
-                            <img src="https://images.unsplash.com/photo-1549693578-d683be217e58?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1549693578-d683be217e58?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Odaiba Gundam">
                         </div>
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Tsukiji+Outer+Market/Ginza+Wako/teamLab+Borderless/DiverCity+Tokyo+Plaza/Tempura+Kondo" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 14</a>
+                    <a href="https://www.google.com/maps/dir/Tsukiji+Outer+Market/Ginza+Wako/teamLab+Borderless/DiverCity+Tokyo+Plaza/Tempura+Kondo" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 14</a>
                 </div>
             </div>
         </div>
@@ -942,7 +942,7 @@
                             <span class="step-time">09:00</span>
                             <div class="step-name">Shibuya Crossing</div>
                             <p class="step-desc">L'incrocio più famoso al mondo e statua di Hachiko.</p>
-                            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600" class="step-img">
+                            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="step-img" alt="Shibuya">
                         </div>
                     </li>
                     <li class="step">
@@ -955,7 +955,7 @@
                     </li>
                 </ul>
                 <div class="map-container">
-                    <a href="https://www.google.com/maps/dir/Shibuya+Scramble+Crossing/Hachik%C5%8D+Memorial+Statue/Shibuya+109/Daikanyama+T-Site/MEGA+Don+Quijote+Shibuya" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 15</a>
+                    <a href="https://www.google.com/maps/dir/Shibuya+Scramble+Crossing/Hachik%C5%8D+Memorial+Statue/Shibuya+109/Daikanyama+T-Site/MEGA+Don+Quijote+Shibuya" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 15</a>
                 </div>
             </div>
         </div>
@@ -979,7 +979,7 @@
                     <p>Volo: 09:05</p>
                 </div>
                 <div class="map-container" style="margin-top: 20px;">
-                    <a href="https://www.google.com/maps/dir/Oshiage+Station/Narita+Airport+Terminal+1" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>&nbsp; Apri Mappa Giorno 16</a>
+                    <a href="https://www.google.com/maps/dir/Oshiage+Station/Narita+Airport+Terminal+1" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i>  Apri Mappa Giorno 16</a>
                 </div>
             </div>
         </div>
@@ -1046,7 +1046,7 @@
         card.classList.toggle('active');
         if (card.classList.contains('active')) {
             setTimeout(() => {
-                const yOffset = -70; // Offset per l'header sticky
+                const yOffset = -80; // Offset per l'header sticky
                 const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({top: y, behavior: 'smooth'});
             }, 300);
@@ -1054,21 +1054,15 @@
     }
 
     function showTab(tabName) {
-        // Nascondi tutto
         document.getElementById('itinerary').style.display = 'none';
         document.getElementById('accommodations').style.display = 'none';
         
-        // Rimuovi classe active dai bottoni
         const btns = document.querySelectorAll('.nav-btn');
         btns.forEach(btn => btn.classList.remove('active'));
 
-        // Mostra il selezionato
-        document.getElementById(tabName).style.display = (tabName === 'itinerary') ? 'block' : 'block'; // itinerary has specific styling, but container handles it
+        document.getElementById(tabName).style.display = 'block';
+        event.currentTarget.classList.add('active');
         
-        // Aggiungi active al bottone cliccato
-        event.target.classList.add('active');
-        
-        // Reset scroll
         window.scrollTo(0, 0);
     }
 </script>
