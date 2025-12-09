@@ -54,7 +54,7 @@
             text-align: center;
             color: white;
             overflow: hidden;
-            margin-bottom: 0px; /* Tolto margine negativo per evitare conflitti con nav */
+            margin-bottom: 0px; 
         }
 
         .hero-bg-img {
@@ -85,9 +85,9 @@
             backdrop-filter: blur(5px);
         }
 
-        /* --- SMART NAVIGATION (MODIFICATO PER SCOMPARIRE) --- */
+        /* --- SMART NAVIGATION --- */
         .sticky-nav {
-            position: fixed; /* Fisso rispetto allo schermo */
+            position: fixed;
             top: 20px;
             left: 0; 
             width: 100%;
@@ -96,13 +96,12 @@
             justify-content: center;
             gap: 10px;
             padding: 0 10px;
-            transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1.000); /* Animazione fluida */
-            pointer-events: none; /* Permette di cliccare sotto se la nav è trasparente ai lati */
+            transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            pointer-events: none;
         }
 
-        /* Classe aggiunta via JS per nascondere la nav */
         .sticky-nav.nav-hidden {
-            transform: translateY(-150%); /* Sposta la nav fuori dallo schermo verso l'alto */
+            transform: translateY(-150%);
         }
 
         .nav-btn {
@@ -119,7 +118,7 @@
             display: flex; align-items: center; gap: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            pointer-events: auto; /* Riabilita il click sui bottoni */
+            pointer-events: auto;
         }
 
         .nav-btn:hover { transform: translateY(-2px); background: white; }
@@ -144,7 +143,7 @@
             overflow: hidden;
             transition: var(--transition);
             border-left: 5px solid var(--primary);
-            -webkit-tap-highlight-color: transparent; /* Rimuove flash blu su mobile */
+            -webkit-tap-highlight-color: transparent;
         }
 
         .day-card:hover { transform: translateY(-3px); }
@@ -181,7 +180,7 @@
             display: flex; align-items: center; justify-content: center;
             color: #666; transition: var(--transition); 
             font-size: 0.8rem;
-            flex-shrink: 0; /* Evita che l'icona si schiacci su mobile */
+            flex-shrink: 0;
         }
         .day-card.active .toggle-icon { transform: rotate(180deg); background: var(--primary); color: white; }
 
@@ -691,26 +690,33 @@
                     </div>
                 </div>
 
-                <div class="local-tip">
-                    <div class="local-tip-title"><i class="fas fa-utensils"></i> Lovina's Local Tip: Pranzo</div>
-                    <p>Per pranzo consiglio vivamente lo <strong>Yudofu (Tofu caldo)</strong> ad Arashiyama. Ho mangiato qui due volte ed è ottimo: <a href="https://maps.app.goo.gl/1V7bVaew7YX8ynaF7" target="_blank">Vedi Ristorante su Maps</a>.</p>
-                </div>
-
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-star"></i></div>
-                        <span class="step-time">09:00</span>
+                        <span class="step-time">10:00</span>
                         <div class="step-title">Kinkaku-ji (Padiglione d'Oro)</div>
-                        <div class="step-desc">Uno dei templi più iconici. Arrivare presto per evitare la folla.</div>
+                        <div class="step-desc">Uno dei templi più iconici. Visita posticipata alla mattina inoltrata.</div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="step-time">12:00</span>
+                        <div class="step-title">Pranzo: Omurahouse Kinkakuji</div>
+                        <div class="step-desc">Ristorante specializzato in Omurice (Omelette di riso).<br><span style="font-size: 0.8rem; color:#666;">10-9 Kinugasa Somoncho, Kita Ward.</span></div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
-                        <span class="step-time">13:30</span>
-                        <div class="step-title">Arashiyama</div>
-                        <div class="step-desc">Foresta di Bambù, Tempio Tenryu-ji e passeggiata.</div>
+                        <span class="step-time">15:30</span>
+                        <div class="step-title">Arashiyama (Pomeriggio)</div>
+                        <div class="step-desc">Foresta di Bambù e tempio Tenryu-ji con la luce più morbida del pomeriggio.</div>
                         <div class="step-img-container" onclick="openLightbox('https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg')">
                             <img src="https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg" class="step-img" alt="Arashiyama Bamboo">
                         </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="step-time">19:00</span>
+                        <div class="step-title">Cena: Yudofu Sagano</div>
+                        <div class="step-desc">Cena tradizionale a base di tofu caldo (Yudofu) in un'atmosfera suggestiva.<br><span style="font-size: 0.8rem; color:#666;">45 Saga Tenryuji.</span></div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -886,8 +892,8 @@
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">17</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
-                    <h3>Okayama e Shinkansen</h3>
-                    <div class="day-route"><i class="fas fa-sun"></i> Giardino Korakuen → Verso Tokyo</div>
+                    <h3>Giardini Neri & Canali</h3>
+                    <div class="day-route"><i class="fas fa-water"></i> Korakuen → Kurashiki</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
@@ -895,21 +901,51 @@
                 <div class="logistics">
                     <div class="log-item">
                         <i class="fas fa-train"></i> 
-                        <span><strong>Spostamento Molto Lungo:</strong> Hiroshima → Okayama (sosta) → Tokyo. Necessario Shinkansen. <span class="price-tag">Stima Totale Shinkansen: ~23.000¥ (145€)</span>. Acquistare biglietti specifici.</span>
+                        <span>Hiroshima → Okayama (Shinkansen ~40 min). <span class="price-tag">Incluso in viaggio precedente</span>.</span>
+                    </div>
+                    <div class="log-item">
+                        <i class="fas fa-subway"></i> 
+                        <span>Okayama → Kurashiki (Treno JR locale ~17 min). <span class="price-tag">~330¥</span>.</span>
                     </div>
                 </div>
+                <div class="bnb-info">
+                    <i class="fas fa-bed"></i>
+                    <div>
+                        <strong>Pernottamento:</strong> Hotel zona Okayama Station<br>
+                        <span style="font-size: 0.75rem; color: #666;">Comodo per ripartire col treno la mattina dopo.</span>
+                    </div>
+                </div>
+                
+                <div class="local-tip">
+                    <div class="local-tip-title"><i class="fas fa-gem"></i> Lovina's Local Tip</div>
+                    <p>Okayama è famosa per la frutta (pesche e uva) e per la fiaba di <strong>Momotaro</strong>. A Kurashiki, cercate il "Denim Street": vendono persino il gelato blu al gusto denim (in realtà è ramune/mirtillo)!</p>
+                </div>
+
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
                         <span class="step-time">10:00</span>
-                        <div class="step-title">Okayama Korakuen</div>
-                        <div class="step-desc">Visita rilassante a uno dei 3 giardini più belli del Giappone e vista esterna del castello nero. Bagagli in deposito in stazione.</div>
+                        <div class="step-title">Korakuen & Castello Nero</div>
+                        <div class="step-desc">Visita al giardino Korakuen e al "Castello del Corvo" (Okayama-jo) che si trova proprio di fronte, attraversando il ponte.</div>
+                        <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Okayama_Castle_and_Asahi_River.jpg/1200px-Okayama_Castle_and_Asahi_River.jpg')">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Okayama_Castle_and_Asahi_River.jpg/1200px-Okayama_Castle_and_Asahi_River.jpg" class="step-img" alt="Okayama Castle">
+                        </div>
                     </li>
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-train"></i></div>
-                        <span class="step-time">17:00</span>
-                        <div class="step-title">Shinkansen per Tokyo</div>
-                        <div class="step-desc">Lungo viaggio (circa 3h 20m con Nozomi). Arrivo all'Airbnb di Hatagaya in serata.</div>
+                        <div class="step-icon"><i class="fas fa-landmark"></i></div>
+                        <span class="step-time">14:00</span>
+                        <div class="step-title">Kurashiki Bikan Quarter</div>
+                        <div class="step-desc">Quartiere storico con canali, salici e antichi magazzini bianchi convertiti in negozi e caffè. Atmosfera magica.</div>
+                        <div class="step-img-container" onclick="openLightbox('https://www.japan-guide.com/g18/2141_01.jpg')">
+                            <img src="https://www.japan-guide.com/g18/2141_01.jpg" class="step-img" alt="Kurashiki Canal">
+                            <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="step-time">19:30</span>
+                        <div class="step-title">Cena a Okayama</div>
+                        <div class="step-desc">Rientro a Okayama. Specialità locale: <strong>Demi-Katsudon</strong> (cotoletta con salsa demi-glace).</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -922,47 +958,47 @@
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">18</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
-                    <h3>Tokyo Start: Shibuya</h3>
-                    <div class="day-route"><i class="fas fa-building"></i> Hatagaya → Meiji Jingu</div>
+                    <h3>Arrivo a Tokyo</h3>
+                    <div class="day-route"><i class="fas fa-shinkansen"></i> Shinkansen → Harajuku → Shibuya</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
             <div class="day-body">
                 <div class="logistics">
                     <div class="log-item">
-                        <i class="fas fa-taxi"></i> 
-                        <span>Per il primo giorno con bagagli, Taxi da Hatagaya a Shibuya/Harajuku è comodo. <span class="price-tag">Stima: ~2.000¥ (12.5€)</span>.</span>
+                        <i class="fas fa-train"></i> 
+                        <span><strong>Shinkansen:</strong> Okayama → Tokyo (Nozomi, ~3h 20m). <span class="price-tag">~17.000¥ (105€)</span>. Partenza consigliata ore 09:00.</span>
                     </div>
-                </div>
-                <div class="local-tip">
-                    <div class="local-tip-title"><i class="fas fa-info-circle"></i> Tour Manager Tip</div>
-                    <p>Se volete salire sul <strong>Shibuya Sky</strong> al tramonto, la prenotazione online è obbligatoria settimane prima!</p>
+                    <div class="log-item">
+                        <i class="fas fa-taxi"></i> 
+                        <span>Taxi Tokyo Station → Hatagaya Airbnb (coi bagagli). <span class="price-tag">Stima: ~3.500¥</span>.</span>
+                    </div>
                 </div>
                 <div class="bnb-info">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
-                        <strong>Punto di Partenza:</strong> Airbnb Hatagaya<br>
-                        <span style="font-size: 0.75rem; color: #666;">Shibuya City 151-0072. Quartiere cool e residenziale.</span>
+                        <strong>Check-in:</strong> Airbnb Hatagaya<br>
+                        <span style="font-size: 0.75rem; color: #666;">Shibuya City 151-0072. Lasciare bagagli e uscire.</span>
                     </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-luggage-cart"></i></div>
-                        <span class="step-time">MATTINA</span>
-                        <div class="step-title">Hatagaya & Caffè</div>
-                        <div class="step-desc">Esplorazione del quartiere, caffè da "Paddlers Coffee" se aperto.</div>
+                        <div class="step-icon"><i class="fas fa-suitcase-rolling"></i></div>
+                        <span class="step-time">13:30</span>
+                        <div class="step-title">Drop Bagagli & Pranzo</div>
+                        <div class="step-desc">Arrivo all'appartamento. Pranzo veloce in zona Hatagaya/Shinjuku.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-torii-gate"></i></div>
-                        <span class="step-time">11:00</span>
+                        <span class="step-time">15:00</span>
                         <div class="step-title">Meiji Jingu & Harajuku</div>
-                        <div class="step-desc">Santuario nella foresta e poi caos colorato di Takeshita Dori.</div>
+                        <div class="step-desc">Passeggiata nel santuario (chiude col tramonto) e poi Takeshita Dori per uno snack (Crêpe).</div>
                     </li>
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-user-friends"></i></div>
-                        <span class="step-time">16:00</span>
-                        <div class="step-title">Shibuya Crossing <span class="booking-alert">Shibuya Sky richiede Prenotazione</span></div>
-                        <div class="step-desc">Il famoso incrocio e la statua di Hachiko.</div>
+                        <div class="step-icon"><i class="fas fa-city"></i></div>
+                        <span class="step-time">17:30</span>
+                        <div class="step-title">Shibuya Crossing & Sky</div>
+                        <div class="step-desc">Vedere l'incrocio di sera è spettacolare. Se prenotato: Shibuya Sky per vista notturna.</div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -1142,6 +1178,12 @@
                         <div class="step-title">Shopping Finale</div>
                         <div class="step-desc">Don Quijote per souvenir, LOFT per cancelleria. Ultimare i regali.</div>
                     </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="step-time">19:30</span>
+                        <div class="step-title">Cena: Sushiya Ginzo Akihabara</div>
+                        <div class="step-desc">Ultima cena a base di sushi nel quartiere dell'elettronica (a pochi minuti da Asakusa).<br><span style="font-size: 0.8rem; color:#666;">1 Chome-8-6 Kanda Sakumacho, Chiyoda City.</span></div>
+                    </li>
                 </ul>
                 <div class="action-area">
                     <a href="https://www.google.com/maps/dir/Hatagaya+Station/Sens%C5%8D-ji/Ameyoko/Don+Quijote" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i> Apri Mappa Percorso Giorno 15</a>
@@ -1235,6 +1277,20 @@
             </div>
 
             <div class="hotel-card">
+                <div class="hotel-img" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/467828062.jpg?k=3a652885934664539879743527237974343825825227&o=&hp=1');">
+                    <span class="hotel-badge">OKAYAMA (1 Notte)</span>
+                </div>
+                <div class="hotel-info">
+                    <h3>Hotel Okayama Area</h3>
+                    <p class="hotel-meta"><i class="far fa-calendar-alt"></i> 17-18 Gen | <i class="fas fa-map-marker-alt"></i> Station Area</p>
+                    <div class="hotel-desc">
+                        Sosta strategica per spezzare il viaggio verso Tokyo e visitare Kurashiki.
+                    </div>
+                    <a href="https://www.google.com/maps/search/hotels+near+okayama+station" target="_blank" class="btn-book"><i class="fas fa-search"></i> Cerca Hotel</a>
+                </div>
+            </div>
+
+            <div class="hotel-card">
                 <div class="hotel-img" style="background-image: url('https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?q=80&w=800');">
                     <span class="hotel-badge">TOKYO (5 Notti)</span>
                 </div>
@@ -1262,6 +1318,7 @@
             <li><strong>Kyoto Hotel (Pexels):</strong> <a href="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt7255e638d38bd109/67f5456b652de5726a124f6d/pexels-mateusz-29241333-Header_Mobile.jpg?format=webp&auto=avif&quality=60&crop=1%3A1&width=1440" target="_blank">Link Immagine</a></li>
             <li><strong>Hiroshima Hotel (Google):</strong> <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnLaJlNqHrPjJiq6stQlVTm--aUblQ608qyw&s" target="_blank">Link Immagine</a></li>
             <li><strong>Shinsekai (JNTO):</strong> <a href="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1675232782/osaka/Osaka_s_id26_1" target="_blank">Link Immagine</a></li>
+            <li><strong>Okayama Castle (WikiCommons):</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Okayama_Castle_and_Asahi_River.jpg/1200px-Okayama_Castle_and_Asahi_River.jpg" target="_blank">Link Immagine</a></li>
             <li><strong>Altre Immagini:</strong> Wikimedia Commons, Unsplash, Klook, Watabi, SmugMug, MatteoInGiappone.</li>
         </ul>
     </div>
