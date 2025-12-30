@@ -2,465 +2,306 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <meta name="description" content="Itinerario di viaggio Giappone 2026 - Osaka, Kyoto, Hiroshima, Tokyo. Master Plan Executive.">
-    <title>Giappone 2026 | App di Viaggio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Itinerario Giappone 2026 - Master Plan App">
+    <title>Giappone 2026 | Travel App</title>
     
     <link rel="icon" type="image/jpeg" href="https://github.com/Evoluti0N11/giappone2026/blob/main/Giappone-immagine-principale.jpg?raw=true">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700;800&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #BC002D; /* Rosso Giappone */
+            --primary: #BC002D;
             --dark: #111111;
             --text: #2c3e50;
             --cat: #E67E22;
             --kobe: #8E44AD;
-            --tip-bg: #FFF8E1;
-            --tip-border: #FFC107;
-            --radius: 16px;
             --glass: rgba(255, 255, 255, 0.96);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --radius: 16px;
             --shadow: 0 4px 20px rgba(0,0,0,0.08);
             
             /* Transport Colors */
-            --jr-green: #009140;
-            --shinkansen: #19388B;
-            --metro-red: #E60012;
-            --bus-purple: #9B59B6;
-            --taxi-yellow: #F1C40F;
+            --jr-green: #009140;      /* JR Yamanote / Loop Lines */
+            --shinkansen: #19388B;    /* Treni proiettile */
+            --metro-red: #E60012;     /* Metro Generica / Marunouchi */
+            --metro-blue: #0078d4;    /* Metro secondaria */
+            --bus-purple: #9B59B6;    /* Bus Kyoto */
+            --taxi-yellow: #F1C40F;   /* Taxi */
         }
-
-        html { scroll-behavior: smooth; }
 
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
         body { 
             font-family: 'Inter', sans-serif; 
             color: var(--text); 
-            line-height: 1.6;
             background: url('https://github.com/Evoluti0N11/giappone2026/blob/main/a6e6bd_bb276caf5b3c49c1826275fa66e45385~mv2.jpg?raw=true') no-repeat center center fixed; 
             background-size: cover;
-            padding-bottom: 100px; /* Space for bottom nav */
+            padding-bottom: 110px;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .day-date, .jp-text { font-family: 'Montserrat', sans-serif; }
-        .jp-font { font-family: 'Noto Sans JP', sans-serif; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-        /* --- HERO SECTION --- */
+        /* HERO */
         header {
-            position: relative;
-            height: 45vh; /* Reduced for mobile */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
+            position: relative; height: 35vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white;
         }
-
         .hero-bg-img {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://github.com/Evoluti0N11/giappone2026/blob/main/Giappone-immagine-principale.jpg?raw=true');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            filter: brightness(0.6);
+            background-size: cover; background-position: center; z-index: -1; filter: brightness(0.6);
         }
+        header h1 { font-size: 2.2rem; text-shadow: 0 4px 15px rgba(0,0,0,0.6); text-transform: uppercase; margin-bottom: 5px; }
 
-        header h1 { 
-            font-size: clamp(2rem, 5vw, 3.5rem); 
-            margin-bottom: 8px; 
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        header p { 
-            font-size: 0.9rem;
-            background: rgba(0,0,0,0.5);
-            padding: 6px 16px; 
-            border-radius: 30px;
-            backdrop-filter: blur(5px);
-        }
-
-        /* --- BOTTOM NAVIGATION (MOBILE APP STYLE) --- */
+        /* CONTAINER & NAV */
+        .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
+        
         .bottom-nav {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(15px);
-            border-radius: 40px;
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            z-index: 1000;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .nav-item {
-            color: #888;
-            text-align: center;
-            flex: 1;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex; flex-direction: column; align-items: center; gap: 4px;
-        }
-        
-        .nav-item i { font-size: 1.2rem; margin-bottom: 2px; }
-        
-        .nav-item.active { color: white; }
-        .nav-item.active i { color: var(--primary); transform: translateY(-2px); }
-
-        /* --- CONTAINER --- */
-        .container { max-width: 800px; margin: 0 auto; padding: 20px 15px; }
-
-        /* --- DAY CARD --- */
-        .day-card {
-            background: var(--glass);
-            border-radius: var(--radius);
-            margin-bottom: 15px;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            overflow: hidden;
-            transition: var(--transition);
-            border-left: 5px solid var(--primary);
-            position: relative;
-        }
-
-        .day-header { 
-            padding: 15px; 
-            display: flex; 
-            align-items: center; 
-            min-height: 80px;
-        }
-        
-        .date-box {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            padding: 6px 4px;
-            min-width: 55px;
-            text-align: center;
-            margin-right: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .date-num { display: block; font-size: 1.2rem; font-weight: 800; color: var(--dark); line-height: 1; }
-        .date-month { font-size: 0.6rem; text-transform: uppercase; color: #666; font-weight: 700; display: block;}
-
-        .day-info { flex: 1; }
-        .day-info h3 { font-size: 1.05rem; margin-bottom: 4px; color: var(--dark); font-weight: 700; line-height: 1.3; }
-        .day-route { font-size: 0.75rem; color: #555; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-        .day-route i { color: var(--primary); }
-        
-        .toggle-icon { margin-left: 10px; color: #999; font-size: 0.9rem; transition: 0.3s; }
-        .day-card.active .toggle-icon { transform: rotate(180deg); color: var(--primary); }
-        .day-card.active .day-body { display: block; }
-        .day-body { display: none; border-top: 1px solid rgba(0,0,0,0.06); animation: fadeIn 0.3s ease; padding-bottom: 20px;}
-
-        /* --- TRANSPORT MODULE (NEW) --- */
-        .transport-hub {
-            background: #f8f9fa;
-            margin: 0;
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .transport-header {
-            font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #999; margin-bottom: 10px; letter-spacing: 1px;
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 400px;
+            background: rgba(30, 30, 30, 0.95); backdrop-filter: blur(15px);
+            border-radius: 40px; padding: 12px 20px;
             display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.15);
         }
+        .nav-item { color: #999; text-align: center; flex: 1; font-size: 0.7rem; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: 0.2s; }
+        .nav-item.active { color: white; transform: translateY(-2px); }
+        .nav-item.active i { color: var(--primary); }
+        .nav-item i { font-size: 1.2rem; }
 
-        .transport-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-        .t-badge { 
-            padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 4px; 
+        /* LEGENDA */
+        .legend-box {
+            background: white; border-radius: 12px; padding: 12px; margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); font-size: 0.75rem;
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
         }
+        .l-item { display: flex; align-items: center; gap: 5px; background: #f5f5f5; padding: 4px 8px; border-radius: 4px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+        /* CARDS */
+        .day-card {
+            background: var(--glass); border-radius: var(--radius); margin-bottom: 15px;
+            box-shadow: var(--shadow); border-left: 5px solid var(--primary); overflow: hidden;
+        }
+        .day-header { padding: 15px; display: flex; align-items: center; cursor: pointer; }
+        .date-box {
+            background: #fff; border: 1px solid #eee; border-radius: 10px;
+            padding: 5px 8px; min-width: 50px; text-align: center; margin-right: 12px;
+        }
+        .date-num { display: block; font-size: 1.3rem; font-weight: 800; color: var(--dark); line-height: 1; }
+        .date-month { font-size: 0.65rem; text-transform: uppercase; color: #666; font-weight: 700; }
+        .day-info h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 3px; }
+        .day-route { font-size: 0.8rem; color: #666; }
+        .toggle-icon { margin-left: auto; color: #ccc; }
+        .day-card.active .toggle-icon { transform: rotate(180deg); color: var(--primary); }
+        .day-body { display: none; padding-bottom: 15px; border-top: 1px solid #eee; }
+        .day-card.active .day-body { display: block; animation: fadeIn 0.3s; }
+
+        /* TRANSPORT HUB */
+        .transport-hub { background: #f4f6f8; padding: 15px; border-bottom: 1px solid #eee; margin-bottom: 15px; }
+        .transport-header { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #888; margin-bottom: 8px; letter-spacing: 1px; display: flex; justify-content: space-between; }
+        .transport-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+        .t-badge { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; color: white; display: inline-flex; align-items: center; gap: 4px; }
+        
         .tb-jr { background: var(--jr-green); }
         .tb-shinkansen { background: var(--shinkansen); }
         .tb-subway { background: var(--metro-red); }
         .tb-bus { background: var(--bus-purple); }
         .tb-taxi { background: var(--taxi-yellow); color: var(--dark); }
 
-        .transport-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-        
-        .btn-transport {
-            background: white; border: 1px solid #ddd; color: var(--dark);
-            padding: 8px; border-radius: 8px; font-size: 0.75rem; font-weight: 600;
-            text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        }
-        
-        /* --- BNB & TAXI HELP --- */
-        .bnb-info {
-            background: #fff;
-            margin: 15px 20px;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-            border-left: 4px solid #9C27B0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            position: relative;
-        }
-        .bnb-header { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
-        .bnb-address { font-size: 0.8rem; color: #666; margin-bottom: 10px; display: block;}
-        
-        .btn-taxi-show {
-            width: 100%;
-            background: var(--dark); color: #FFC107;
-            border: none; padding: 10px; border-radius: 8px;
-            font-weight: 700; font-size: 0.85rem; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; gap: 8px;
-        }
+        .transport-details { font-size: 0.85rem; color: #444; line-height: 1.5; background: white; padding: 8px; border-radius: 6px; border: 1px solid #ddd; }
+        .transport-cost { font-weight: 700; color: #2E7D32; font-size: 0.8rem; display: block; margin-top: 4px; }
 
-        /* --- TIMELINE STEPS --- */
-        .steps-list { list-style: none; padding: 10px 20px; }
-        .step { position: relative; padding-left: 35px; margin-bottom: 30px; }
-        .step::before { content: ''; position: absolute; left: 12px; top: 30px; bottom: -40px; width: 2px; background: #e0e0e0; }
+        /* STEPS */
+        .steps-list { list-style: none; padding: 0 15px; }
+        .step { position: relative; padding-left: 35px; margin-bottom: 25px; }
+        .step::before { content: ''; position: absolute; left: 11px; top: 28px; bottom: -35px; width: 2px; background: #eee; }
         .step:last-child::before { display: none; }
-        
         .step-icon {
-            position: absolute; left: 0; top: 0; width: 26px; height: 26px;
+            position: absolute; left: 0; top: 0; width: 24px; height: 24px;
             background: white; border: 2px solid var(--primary); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 0.75rem; z-index: 2;
+            display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 0.7rem; z-index: 2;
         }
+        .step-time { font-size: 0.7rem; font-weight: 800; color: #aaa; }
+        .step-title { font-size: 1rem; font-weight: 700; color: var(--dark); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;}
+        
+        /* Restaurant Link */
+        .rest-link { font-size: 0.7rem; background: #FFF3E0; color: #E65100; padding: 2px 6px; border-radius: 4px; text-decoration: none; border: 1px solid #FFCC80; }
 
-        .step-time { font-size: 0.7rem; font-weight: 800; color: #999; display: block; margin-bottom: 2px;}
-        .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: var(--dark); }
-        .step-desc { font-size: 0.9rem; color: #555; line-height: 1.5; }
-
-        .booking-alert { background: #ffebee; color: #d32f2f; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-left: 5px; border: 1px solid #ffcdd2; vertical-align: middle; }
-
-        /* --- IMAGES & LIGHTBOX --- */
+        /* Images */
         .step-img-container {
-            position: relative; border-radius: 12px; overflow: hidden; margin-top: 10px;
-            background-color: #eee; height: 160px;
+            margin-top: 10px; border-radius: 8px; overflow: hidden; height: 160px; background: #eee; position: relative;
         }
         .step-img { width: 100%; height: 100%; object-fit: cover; }
-        .img-hint { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; padding: 3px 8px; border-radius: 15px; font-size: 0.65rem; backdrop-filter: blur(4px); }
+        .img-hint { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.65rem; }
 
-        #lightbox {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 2000;
-            display: none; justify-content: center; align-items: center; padding: 10px;
+        /* ACTIONS */
+        .action-area { padding: 10px 15px; text-align: center; }
+        .btn-daily-map {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 12px; background: white; color: var(--primary);
+            border: 1px solid var(--primary); border-radius: 30px;
+            font-weight: 700; font-size: 0.85rem; text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s;
         }
-        #lightbox img { max-width: 100%; max-height: 80vh; border-radius: 8px; box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+        .btn-daily-map:active { background: #fce4ec; transform: scale(0.98); }
 
-        /* --- TAXI MODAL --- */
+        /* Taxi Modal */
         #taxi-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 3000;
-            display: none; justify-content: center; align-items: center; padding: 20px;
-            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.85); z-index: 3000; display: none;
+            justify-content: center; align-items: center; padding: 20px;
         }
-        .taxi-card-content {
-            background: white; width: 100%; max-width: 400px;
-            border-radius: 20px; padding: 30px 20px; text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            position: relative;
-        }
-        .close-taxi { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #999; cursor: pointer; }
-        .taxi-jp-address {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 1.8rem; font-weight: 900; line-height: 1.4;
-            color: var(--dark); margin: 20px 0; border: 2px solid var(--primary); padding: 15px; border-radius: 10px;
-        }
-        .taxi-hint { font-size: 0.9rem; color: #555; margin-bottom: 20px; }
+        .taxi-card { background: white; width: 100%; max-width: 350px; border-radius: 20px; padding: 25px; text-align: center; position: relative; }
+        .taxi-jp { font-family: 'Noto Sans JP'; font-size: 1.5rem; font-weight: 900; margin: 15px 0; border: 2px solid var(--primary); padding: 10px; border-radius: 8px; }
 
-        /* --- UTILITIES TAB --- */
-        .util-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .util-card {
-            background: white; padding: 15px; border-radius: 12px;
-            text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-decoration: none; color: var(--text);
-        }
-        .util-icon { width: 50px; height: 50px; background: #f0f2f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 1.2rem; color: var(--primary); }
-        .util-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 5px; }
-        .util-desc { font-size: 0.75rem; color: #777; line-height: 1.3; }
+        /* Lightbox */
+        #lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 4000; display: none; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 100%; max-height: 90vh; }
 
-        .emergency-row { background: #ffebee; border: 1px solid #ffcdd2; color: #c62828; padding: 15px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .emergency-num { font-size: 1.5rem; font-weight: 800; }
-
-        /* TABS VISIBILITY */
+        /* Tabs */
         #itinerary, #accommodations, #utilities { display: none; animation: fadeIn 0.3s; }
-        
-        /* SPECIFIC CARD STYLES */
-        .special-cat { border-left-color: var(--cat); }
-        .special-cat .step-icon { border-color: var(--cat); color: var(--cat); }
-        .special-kobe { border-left-color: var(--kobe); }
-        .special-kobe .step-icon { border-color: var(--kobe); color: var(--kobe); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Special Colors */
+        .special-cat { border-left-color: var(--cat); }
+        .special-kobe { border-left-color: var(--kobe); }
 
     </style>
 </head>
 <body>
 
-<div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Full Screen Image">
-</div>
+<div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
 
 <div id="taxi-modal">
-    <div class="taxi-card-content">
-        <div class="close-taxi" onclick="closeTaxiCard()">&times;</div>
-        <i class="fas fa-taxi" style="font-size: 2rem; color: #FFC107; margin-bottom: 10px;"></i>
-        <h3>Mostra al Conducente</h3>
-        <p class="taxi-hint">Show this screen to the Taxi driver</p>
-        <div class="taxi-jp-address" id="taxi-address-text">
-            〒100-0005<br>東京都千代田区丸の内1丁目
-        </div>
-        <p id="taxi-hotel-name" style="font-weight: 700;">Tokyo Station</p>
+    <div class="taxi-card">
+        <div style="position:absolute; top:15px; right:20px; font-size:1.5rem;" onclick="document.getElementById('taxi-modal').style.display='none'">×</div>
+        <i class="fas fa-taxi" style="font-size: 2rem; color: #FFC107;"></i>
+        <h3 style="margin-top:10px;">Mostra al Driver</h3>
+        <div class="taxi-jp" id="taxi-text">...</div>
+        <p id="taxi-name" style="font-weight:700; color:#555;">...</p>
     </div>
 </div>
 
 <header>
     <div class="hero-bg-img"></div>
     <h1>Giappone 2026</h1>
-    <p><i class="far fa-calendar-alt"></i> 8 - 23 Gennaio | 4 Persone</p>
+    <p><i class="far fa-calendar-alt"></i> 8 - 23 Gennaio</p>
 </header>
 
 <div class="container">
 
     <div id="itinerary" style="display: block;">
+        
+        <div class="legend-box">
+            <span style="font-weight:800; width:100%; text-align:center; margin-bottom:5px;">Legenda Trasporti</span>
+            <div class="l-item"><span class="dot" style="background:var(--jr-green)"></span> JR Line</div>
+            <div class="l-item"><span class="dot" style="background:var(--shinkansen)"></span> Shinkansen</div>
+            <div class="l-item"><span class="dot" style="background:var(--metro-red)"></span> Metro</div>
+            <div class="l-item"><span class="dot" style="background:var(--bus-purple)"></span> Bus</div>
+            <div class="l-item"><span class="dot" style="background:var(--taxi-yellow)"></span> Taxi</div>
+        </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">08</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Arrivo a Osaka</h3>
-                    <div class="day-route"><i class="fas fa-plane-arrival"></i> KIX → Chuo Ward</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Arrivo a Osaka</h3><div class="day-route">KIX → Dotonbori</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-header">Transport & Logistica</div>
-                    <div class="transport-badges">
-                        <span class="t-badge tb-jr"><i class="fas fa-train"></i> Nankai Express</span>
-                        <span class="t-badge tb-subway">~1.100¥</span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: #444; margin-bottom: 10px;">
-                        Prendere <strong>Nankai Airport Express</strong> per Namba Station. Biglietto su posto o IC Card.
-                    </p>
-                    <div class="transport-actions">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=Namba+Station&origin=Kansai+International+Airport&travelmode=transit" target="_blank" class="btn-transport"><i class="fas fa-map-signs"></i> Orari/Mappa</a>
-                        <a href="https://www.klook.com/activity/599-kansai-airport-express-train-ticket-osaka/" target="_blank" class="btn-transport" style="border-color: #FF5722; color: #FF5722;"><i class="fas fa-ticket-alt"></i> Biglietti</a>
+                    <div class="transport-header">Logistica <span class="t-badge tb-jr">Nankai</span></div>
+                    <div class="transport-details">
+                        Prendere <strong>Nankai Airport Express</strong> da KIX. Scendere a <strong>Namba Station</strong>.
+                        <span class="transport-cost">Costo: ~1.100¥ (~7€)</span>
                     </div>
                 </div>
-
-                <div class="bnb-info">
-                    <div class="bnb-header"><i class="fas fa-home" style="color:#9C27B0"></i> <strong>Airbnb Chuo Ward</strong></div>
-                    <span class="bnb-address">542-0063, Chuo Ward, Osaka</span>
-                    <button class="btn-taxi-show" onclick="openTaxiCard('osaka_bnb')"><i class="fas fa-mobile-alt"></i> Indirizzo per Taxi/Uber</button>
-                </div>
-
                 <ul class="steps-list">
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-luggage-cart"></i></div>
+                        <div class="step-icon"><i class="fas fa-home"></i></div>
                         <span class="step-time">13:30</span>
-                        <div class="step-title">Check-in</div>
-                        <div class="step-desc">Sistemazione nell'appartamento e rinfrescata veloce.</div>
+                        <div class="step-title">Check-in Airbnb</div>
+                        <button class="rest-link" onclick="openTaxi('osaka_bnb')"><i class="fas fa-taxi"></i> Indirizzo</button>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-city"></i></div>
                         <span class="step-time">17:00</span>
-                        <div class="step-title">Dotonbori Neon Lights</div>
-                        <div class="step-desc">Esplorazione lungo il canale. Foto con Glico Man.</div>
+                        <div class="step-title">Dotonbori</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg')">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" class="step-img" loading="lazy">
-                            <span class="img-hint"><i class="fas fa-expand"></i> Tap</span>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" class="step-img">
                         </div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:00</span>
-                        <div class="step-title">Cena: Chibo</div>
-                        <div class="step-desc">Takoyaki e Okonomiyaki da Chibo.</div>
+                        <div class="step-title">Cena: Chibo <a href="https://goo.gl/maps/abc1234" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Map</a></div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Kansai+International+Airport/Namba+Station/Dotonbori" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 1</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">09</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Squali & Retrò</h3>
-                    <div class="day-route"><i class="fas fa-fish"></i> Kaiyukan → Shinsekai</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Squali & Retrò</h3><div class="day-route">Kaiyukan → Shinsekai</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges">
-                        <span class="t-badge tb-subway"><i class="fas fa-subway"></i> Chuo Line</span>
-                        <span class="t-badge tb-subway"><i class="fas fa-subway"></i> Sakaisuji Line</span>
+                    <div class="transport-header">Metro <span class="t-badge tb-subway">Chuo Line</span></div>
+                    <div class="transport-details">
+                        Da Namba o Hommachi → <strong>Osakako Station</strong>.
+                        <span class="transport-cost">Totale Metro: ~800¥ (~5€)</span>
                     </div>
-                    <p style="font-size: 0.85rem;">Metro Osaka (~800¥). Usare <strong>IC Card</strong> (Suica/Icoca) ai tornelli.</p>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-water"></i></div>
                         <span class="step-time">09:00</span>
-                        <div class="step-title">Acquario Kaiyukan <span class="booking-alert">Ticket Online</span></div>
-                        <div class="step-desc">Famoso per lo squalo balena.</div>
-                        <a href="https://www.kaiyukan.com/language/eng/" target="_blank" style="font-size:0.75rem; text-decoration: underline; color: var(--primary);">Sito Ufficiale</a>
-                        <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Whale_shark_Georgia_Aquarium.jpg/800px-Whale_shark_Georgia_Aquarium.jpg')">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Whale_shark_Georgia_Aquarium.jpg/800px-Whale_shark_Georgia_Aquarium.jpg" class="step-img">
+                        <div class="step-title">Acquario Kaiyukan</div>
+                        <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Osaka_Aquarium_Kaiyukan_20180917.jpg/800px-Osaka_Aquarium_Kaiyukan_20180917.jpg')">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Osaka_Aquarium_Kaiyukan_20180917.jpg/800px-Osaka_Aquarium_Kaiyukan_20180917.jpg" class="step-img">
                         </div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-broadcast-tower"></i></div>
                         <span class="step-time">14:00</span>
-                        <div class="step-title">Shinsekai & Tsutenkaku</div>
-                        <div class="step-desc">Quartiere nostalgico e torre Tsutenkaku.</div>
+                        <div class="step-title">Shinsekai</div>
+                        <div class="step-desc">Fermata metro: Ebisucho.</div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Namba+Station/Osaka+Aquarium+Kaiyukan/Shinsekai" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 2</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">10</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>I Cervi Sacri</h3>
-                    <div class="day-route"><i class="fas fa-torii-gate"></i> Nara Park</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Nara & Gyoza</h3><div class="day-route">Nara Park → Temma</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges">
-                        <span class="t-badge tb-jr"><i class="fas fa-train"></i> Kintetsu / JR Line</span>
-                    </div>
-                    <p style="font-size: 0.85rem;">Osaka → Nara (~40 min). Ritorno via JR Yamatoji per Temma.</p>
-                    <div class="transport-actions">
-                        <a href="https://world.jorudan.co.jp/mln/en/?p=0&from=Osaka-Namba&to=Kintetsu-Nara&date=20260110&time=0900" target="_blank" class="btn-transport"><i class="far fa-clock"></i> Orari Treni</a>
+                    <div class="transport-header">Treno <span class="t-badge tb-jr">Kintetsu/JR</span></div>
+                    <div class="transport-details">
+                        Andata: Kintetsu-Nara. Ritorno: JR Nara per Temma (Osaka).
+                        <span class="transport-cost">Totale A/R: ~1.400¥ (~9€)</span>
                     </div>
                 </div>
-                
-                <div class="local-tip" style="margin: 15px 20px; padding: 12px; background: #E3F2FD; border-left: 4px solid #2196F3; border-radius: 8px; font-size: 0.85rem;">
-                    <strong><i class="fas fa-info-circle"></i> Lovina's Tip:</strong> I cervi sono ovunque, non serve pagare l'ingresso al parco specifico.
-                </div>
-
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-leaf"></i></div>
                         <span class="step-time">09:30</span>
-                        <div class="step-title">Parco di Nara & Todai-ji</div>
-                        <div class="step-desc">Incontro con i cervi e il Grande Buddha.</div>
+                        <div class="step-title">Nara Park</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800')">
                             <img src="https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800" class="step-img">
                         </div>
@@ -468,220 +309,204 @@
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:30</span>
-                        <div class="step-title">Gyozaclub Rocklee</div>
-                        <div class="step-desc">Cena Gyoza a Temma.</div>
-                        <a href="https://maps.app.goo.gl/qX8s5J" target="_blank" class="btn-transport" style="display:inline-flex; width: auto; margin-top:5px;"><i class="fas fa-map-marker-alt"></i> Mappa</a>
+                        <div class="step-title">Gyozaclub Rocklee <a href="https://goo.gl/maps/xyzRocklee" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Map</a></div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Namba+Station/Nara+Park/Temma+Station/Gyozaclub+Rocklee" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 3</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card special-kobe">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">11</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3 style="color:var(--kobe)">Kobe Beef</h3>
-                    <div class="day-route"><i class="fas fa-utensils"></i> Mouriya → Porto</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Kobe Beef</h3><div class="day-route">Mouriya → Harborland</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges">
-                        <span class="t-badge tb-jr" style="background: var(--kobe)"><i class="fas fa-train"></i> Hanshin Line</span>
+                    <div class="transport-header">Treno <span class="t-badge tb-jr">Hanshin</span></div>
+                    <div class="transport-details">
+                        Namba → Kobe-Sannomiya.
+                        <span class="transport-cost">Totale A/R: ~1.000¥ (~6€)</span>
                     </div>
-                    <p style="font-size: 0.85rem;">Namba → Kobe-Sannomiya (~45 min).</p>
                 </div>
-
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">12:30</span>
-                        <div class="step-title">Pranzo: Kobe Beef <span class="booking-alert">PRENOTARE</span></div>
-                        <div class="step-desc">Ristorante <strong>Mouriya</strong>. Esperienza top.</div>
-                        <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1605274281728-6a8406f52c49?q=80&w=800')">
-                            <img src="https://images.unsplash.com/photo-1605274281728-6a8406f52c49?q=80&w=800" class="step-img">
+                        <div class="step-title">Mouriya (Kobe Beef) <a href="https://goo.gl/maps/mouriya" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Map</a></div>
+                        <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Kobe_Beef_01.jpg/800px-Kobe_Beef_01.jpg')">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Kobe_Beef_01.jpg/800px-Kobe_Beef_01.jpg" class="step-img">
                         </div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-anchor"></i></div>
                         <span class="step-time">18:00</span>
                         <div class="step-title">Kobe Harborland</div>
-                        <div class="step-desc">Passeggiata al porto illuminato (Mosaic).</div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Osaka-Namba+Station/Mouriya+Sannomiya+Steak/Kobe+Harborland" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 4</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">12</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Arrivo a Kyoto</h3>
-                    <div class="day-route"><i class="fas fa-torii-gate"></i> Fushimi Inari</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Arrivo a Kyoto</h3><div class="day-route">Fushimi Inari → Hotel</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-header">Spostamento Città</div>
-                    <div class="transport-badges">
-                        <span class="t-badge tb-jr"><i class="fas fa-train"></i> JR Kyoto Line</span>
-                        <span class="t-badge tb-bus"><i class="fas fa-bus"></i> Kyoto Bus</span>
+                    <div class="transport-header">Spostamento <span class="t-badge tb-jr">JR Kyoto</span> <span class="t-badge tb-bus">Bus</span></div>
+                    <div class="transport-details">
+                        Osaka Station → Kyoto Station. Bus/Taxi per Hotel.
+                        <span class="transport-cost">Treno: ~600¥ | Bus Pass: 700¥</span>
                     </div>
-                    <p style="font-size: 0.85rem; margin-bottom: 5px;">Bagagli all'Hotel prima di andare al Fushimi Inari.</p>
-                    <p style="font-size: 0.8rem; background: #fff3e0; padding: 5px; border-radius: 4px;">💡 <strong>Bus Tip:</strong> Si sale dietro, si paga davanti (700¥ Pass Giornaliero).</p>
                 </div>
-
-                <div class="bnb-info">
-                    <div class="bnb-header"><i class="fas fa-hotel" style="color:#9C27B0"></i> <strong>Comfort Hotel Kyoto</strong></div>
-                    <span class="bnb-address">Shimogyo-ku, Horikawagojo</span>
-                    <button class="btn-taxi-show" onclick="openTaxiCard('kyoto_hotel')"><i class="fas fa-mobile-alt"></i> Indirizzo per Taxi</button>
-                </div>
-
                 <ul class="steps-list">
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-home"></i></div>
+                        <span class="step-time">11:00</span>
+                        <div class="step-title">Drop Bagagli Hotel</div>
+                        <button class="rest-link" onclick="openTaxi('kyoto_hotel')"><i class="fas fa-taxi"></i> Indirizzo</button>
+                    </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-torii-gate"></i></div>
                         <span class="step-time">13:00</span>
-                        <div class="step-title">Fushimi Inari Taisha</div>
-                        <div class="step-desc">I mille torii rossi. Se ve la sentite, salite fino in cima (12k passi!).</div>
+                        <div class="step-title">Fushimi Inari</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800')">
                             <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800" class="step-img">
                         </div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Comfort+Hotel+Kyoto+Horikawagojo/Fushimi+Inari+Taisha" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 5</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">13</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Oro & Bambù</h3>
-                    <div class="day-route"><i class="fas fa-tree"></i> Kinkaku-ji → Arashiyama</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Oro & Bambù</h3><div class="day-route">Kinkaku-ji → Arashiyama</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges"><span class="t-badge tb-bus">Bus 205/101</span> <span class="t-badge tb-jr">Randen</span></div>
+                    <div class="transport-header">Bus & Treno <span class="t-badge tb-bus">Bus 205</span></div>
+                    <div class="transport-details">
+                        Bus per Kinkaku-ji. Treno Randen per Arashiyama.
+                        <span class="transport-cost">Totale: ~1.000¥</span>
+                    </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-star"></i></div>
                         <span class="step-time">10:00</span>
-                        <div class="step-title">Kinkaku-ji</div>
-                        <div class="step-desc">Padiglione d'Oro.</div>
+                        <div class="step-title">Kinkaku-ji (Oro)</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
                         <span class="step-time">15:30</span>
-                        <div class="step-title">Arashiyama & Bambù</div>
-                        <div class="step-desc">Foresta di bambù e tempio Tenryu-ji.</div>
+                        <div class="step-title">Arashiyama Bamboo</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:00</span>
-                        <div class="step-title">Cena: Yudofu Sagano</div>
-                        <div class="step-desc">Tofu caldo tradizionale.</div>
+                        <div class="step-title">Cena: Yudofu Sagano <a href="https://goo.gl/maps/Sagano" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Map</a></div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Comfort+Hotel+Kyoto+Horikawagojo/Kinkaku-ji/Arashiyama+Bamboo+Grove/Yudofu+Sagano" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 6</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">14</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Tradizione & Nintendo</h3>
-                    <div class="day-route">Kiyomizu → Nintendo Kyoto</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Nintendo & Kiyomizu</h3><div class="day-route">Gion → Nintendo</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
+                <div class="transport-hub">
+                    <div class="transport-header">Bus <span class="t-badge tb-bus">City Bus</span></div>
+                    <div class="transport-details">
+                        Usa Bus Pass o IC Card. Zona Higashiyama/Gion.
+                        <span class="transport-cost">Totale: ~700¥</span>
+                    </div>
+                </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-mountain"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Kiyomizu-dera</div>
-                        <div class="step-desc">Tempio dell'Acqua Pura.</div>
-                    </li>
-                    <li class="step">
-                        <div class="step-icon"><i class="fas fa-cookie-bite"></i></div>
-                        <span class="step-time">EXTRA</span>
-                        <div class="step-title">Dolci a Demachi</div>
-                        <div class="step-desc">Demachi Futaba (Wagashi) & Ajari Mochi.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-gamepad"></i></div>
                         <span class="step-time">14:00</span>
-                        <div class="step-title">Nintendo Kyoto Store</div>
-                        <div class="step-desc">Presso Kyoto Takashimaya S.C.</div>
+                        <div class="step-title">Nintendo Kyoto</div>
+                        <div class="step-desc">A Kyoto Takashimaya S.C.</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1612404730960-5c7157472d2e?q=80&w=800')">
                             <img src="https://images.unsplash.com/photo-1612404730960-5c7157472d2e?q=80&w=800" class="step-img">
                         </div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Comfort+Hotel+Kyoto+Horikawagojo/Kiyomizu-dera/Nintendo+Kyoto/Gion" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 7</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">15</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Castello & Hiroshima</h3>
-                    <div class="day-route"><i class="fas fa-chess-rook"></i> Himeji → Hiroshima</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Himeji & Hiroshima</h3><div class="day-route">Himeji Castle → Hotel</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-header">Lungo Viaggio Shinkansen</div>
-                    <div class="transport-badges">
-                        <span class="t-badge tb-shinkansen"><i class="fas fa-train"></i> Shinkansen</span>
+                    <div class="transport-header">Lungo Viaggio <span class="t-badge tb-shinkansen">Shinkansen</span></div>
+                    <div class="transport-details">
+                        Kyoto → Himeji (Stop/Lockers) → Hiroshima.
+                        <span class="transport-cost">Totale: ~13.500¥ (~85€)</span>
                     </div>
-                    <p style="font-size: 0.85rem;">Kyoto → Himeji (Stop/Lockers) → Hiroshima.<br><strong>Costo:</strong> ~13.500¥.</p>
                 </div>
-
-                <div class="bnb-info">
-                    <div class="bnb-header"><i class="fas fa-hotel" style="color:#9C27B0"></i> <strong>Smile Hotel Hiroshima</strong></div>
-                    <span class="bnb-address">Nagarekawa-cho</span>
-                    <button class="btn-taxi-show" onclick="openTaxiCard('hiroshima_hotel')"><i class="fas fa-mobile-alt"></i> Indirizzo per Taxi</button>
-                </div>
-
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-chess-rook"></i></div>
                         <span class="step-time">11:00</span>
-                        <div class="step-title">Castello di Himeji</div>
-                        <div class="step-desc">Lasciare bagagli nei coin locker in stazione.</div>
+                        <div class="step-title">Himeji Castle</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:00</span>
-                        <div class="step-title">Okonomimura</div>
-                        <div class="step-desc">Cena Hiroshima Style Okonomiyaki.</div>
+                        <div class="step-title">Okonomimura <a href="https://goo.gl/maps/Okonomimura" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Map</a></div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Kyoto+Station/Himeji+Castle/Hiroshima+Station/Smile+Hotel+Hiroshima" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 8</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">16</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Pace & Miyajima</h3>
-                    <div class="day-route"><i class="fas fa-peace"></i> Museo → Isola</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Pace & Miyajima</h3><div class="day-route">Peace Park → Isola</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges">
-                        <span class="t-badge tb-jr"><i class="fas fa-train"></i> JR Sanyo</span>
-                        <span class="t-badge tb-jr"><i class="fas fa-ship"></i> JR Ferry</span>
+                    <div class="transport-header">Treno & Nave <span class="t-badge tb-jr">JR Sanyo</span></div>
+                    <div class="transport-details">
+                        Hiroshima Station → Miyajimaguchi → Traghetto JR.
+                        <span class="transport-cost">Totale A/R: ~1.400¥ (~9€)</span>
                     </div>
-                    <p style="font-size:0.85rem">Usare IC Card per treno e traghetto JR.</p>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
@@ -693,188 +518,184 @@
                         <div class="step-icon"><i class="fas fa-torii-gate"></i></div>
                         <span class="step-time">13:30</span>
                         <div class="step-title">Isola di Miyajima</div>
-                        <div class="step-desc">Traghetto per l'isola sacra. Attenzione ai cervi!</div>
-                        <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1554797584-c7058866e4a2?q=80&w=800')">
-                            <img src="https://images.unsplash.com/photo-1554797584-c7058866e4a2?q=80&w=800" class="step-img">
+                        <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Itsukushima_gate_SC_20051106.jpg/800px-Itsukushima_gate_SC_20051106.jpg')">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Itsukushima_gate_SC_20051106.jpg/800px-Itsukushima_gate_SC_20051106.jpg" class="step-img">
                         </div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Smile+Hotel+Hiroshima/Hiroshima+Peace+Memorial+Park/Miyajimaguchi+Station/Itsukushima+Jinsha" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 9</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">17</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Giardini & Canali</h3>
-                    <div class="day-route">Okayama → Kurashiki</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Kurashiki & Okayama</h3><div class="day-route">Giardino → Canali</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <p style="font-size:0.85rem">Shinkansen per Okayama (~40m), poi treno locale JR per Kurashiki (~17m).</p>
+                    <div class="transport-header">Treno <span class="t-badge tb-jr">Sanyo Line</span></div>
+                    <div class="transport-details">
+                        Shinkansen per Okayama. Treno locale per Kurashiki.
+                        <span class="transport-cost">Locale: ~330¥</span>
+                    </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
                         <span class="step-time">10:00</span>
-                        <div class="step-title">Korakuen & Castello Nero</div>
+                        <div class="step-title">Korakuen Garden</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-landmark"></i></div>
                         <span class="step-time">14:00</span>
-                        <div class="step-title">Kurashiki Bikan Quarter</div>
-                        <div class="step-desc">Canali e magazzini bianchi. Cercate il "Denim Ice Cream".</div>
+                        <div class="step-title">Kurashiki Bikan</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Kurashiki_Bikan_Quarter_View_from_Imabashi_Bridge_in_the_Evening.jpg/800px-Kurashiki_Bikan_Quarter_View_from_Imabashi_Bridge_in_the_Evening.jpg')">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Kurashiki_Bikan_Quarter_View_from_Imabashi_Bridge_in_the_Evening.jpg/800px-Kurashiki_Bikan_Quarter_View_from_Imabashi_Bridge_in_the_Evening.jpg" class="step-img">
                         </div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Okayama+Station/Korakuen/Kurashiki+Bikan+Historical+Quarter" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 10</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">18</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Arrivo a Tokyo</h3>
-                    <div class="day-route"><i class="fas fa-shinkansen"></i> Shinkansen → Harajuku</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Arrivo a Tokyo</h3><div class="day-route">Shinkansen → Shibuya</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-header">Trasferimento Finale</div>
-                    <div class="transport-badges">
-                        <span class="t-badge tb-shinkansen">Nozomi Shinkansen</span>
-                        <span class="t-badge tb-taxi">Taxi</span>
+                    <div class="transport-header">Nozomi & Taxi <span class="t-badge tb-shinkansen">Nozomi</span> <span class="t-badge tb-taxi">Taxi</span></div>
+                    <div class="transport-details">
+                        Okayama → Tokyo Station. Taxi per Airbnb Hatagaya.
+                        <span class="transport-cost">Taxi: ~3.500¥</span>
                     </div>
-                    <p style="font-size: 0.85rem;">Okayama → Tokyo (~3h 20m). Dalla stazione Tokyo, Taxi per Hatagaya (~3.500¥) con bagagli.</p>
                 </div>
-
-                <div class="bnb-info">
-                    <div class="bnb-header"><i class="fas fa-home" style="color:#9C27B0"></i> <strong>Airbnb Hatagaya</strong></div>
-                    <span class="bnb-address">Shibuya City 151-0072</span>
-                    <button class="btn-taxi-show" onclick="openTaxiCard('tokyo_bnb')"><i class="fas fa-mobile-alt"></i> Indirizzo per Taxi/Uber</button>
-                </div>
-
                 <ul class="steps-list">
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-torii-gate"></i></div>
-                        <span class="step-time">15:00</span>
-                        <div class="step-title">Meiji Jingu & Harajuku</div>
-                        <div class="step-desc">Passeggiata a Takeshita Dori.</div>
+                        <div class="step-icon"><i class="fas fa-home"></i></div>
+                        <span class="step-time">13:30</span>
+                        <div class="step-title">Drop Bagagli</div>
+                        <button class="rest-link" onclick="openTaxi('tokyo_bnb')"><i class="fas fa-taxi"></i> Indirizzo</button>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-city"></i></div>
                         <span class="step-time">17:30</span>
                         <div class="step-title">Shibuya Crossing</div>
-                        <div class="step-desc">L'incrocio più famoso del mondo.</div>
+                        <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Shibuya_Crossing_Tokyo_2016.jpg/800px-Shibuya_Crossing_Tokyo_2016.jpg')">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Shibuya_Crossing_Tokyo_2016.jpg/800px-Shibuya_Crossing_Tokyo_2016.jpg" class="step-img">
+                        </div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Tokyo+Station/Hatagaya+Station/Meiji+Jingu/Shibuya+Crossing" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 11</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card special-cat">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">19</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3 style="color:var(--cat)">Gatti & Compleanno</h3>
-                    <div class="day-route">Gotokuji → Yanaka</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Gatti & Compleanno</h3><div class="day-route">Gotokuji → Yanaka</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <p style="font-size:0.85rem">Odakyu Line per Gotokuji. Metro per Yanaka.</p>
+                    <div class="transport-header">Metro <span class="t-badge tb-subway">Chiyoda</span> <span class="t-badge tb-jr">Odakyu</span></div>
+                    <div class="transport-details">
+                        Per Gotokuji: Odakyu Line. Per Yanaka: Nippori/Sendagi.
+                        <span class="transport-cost">Totale: ~900¥</span>
+                    </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-heart"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Yanaka Ginza</div>
-                        <div class="step-desc">Città dei Gatti e atmosfera antica.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-paw"></i></div>
                         <span class="step-time">14:30</span>
-                        <div class="step-title">Gotoku-ji</div>
-                        <div class="step-desc">Tempio dei mille gatti bianchi.</div>
-                        <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1583244583485-f5a8286a074a?q=80&w=800')">
-                            <img src="https://images.unsplash.com/photo-1583244583485-f5a8286a074a?q=80&w=800" class="step-img">
+                        <div class="step-title">Gotoku-ji (Gatti)</div>
+                        <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Gotokuji_Manekineko_20191116.jpg/800px-Gotokuji_Manekineko_20191116.jpg')">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Gotokuji_Manekineko_20191116.jpg/800px-Gotokuji_Manekineko_20191116.jpg" class="step-img">
                         </div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-birthday-cake"></i></div>
                         <span class="step-time">19:00</span>
                         <div class="step-title">Cena Izakaya Shinjuku</div>
-                        <div class="step-desc">Cena di compleanno! Evitare Torikizoku, cercare vero Izakaya.</div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Hatagaya+Station/Yanaka+Ginza/Gotokuji+Temple/Shinjuku+Station" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 12</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">20</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Monte Fuji & Gyoza</h3>
-                    <div class="day-route"><i class="fas fa-mountain"></i> Bus Tour</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Monte Fuji</h3><div class="day-route">Bus Tour → Kabukicho</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges"><span class="t-badge tb-bus">Bus Tour</span></div>
-                    <p style="font-size:0.85rem">Ritrovo a Shinjuku (verificare orario voucher).</p>
+                    <div class="transport-header">Bus Tour</div>
+                    <div class="transport-details">
+                        Ritrovo solitamente a Shinjuku (SMBC Bank/Love Object).
+                    </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-camera"></i></div>
+                        <div class="step-icon"><i class="fas fa-mountain"></i></div>
                         <span class="step-time">10:30</span>
                         <div class="step-title">Lago Kawaguchi</div>
-                        <div class="step-desc">Vista iconica del Fuji e Oishi Park.</div>
-                        <a href="https://www.klook.com/en-US/activity/93901-mtfuji-one-day-tour-tokyo/" target="_blank" class="btn-transport" style="margin-top:5px; border-color:#FF5722; color:#FF5722;">Vedi Tour su Klook</a>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:00</span>
-                        <div class="step-title">Kakekomi Gyoza</div>
-                        <div class="step-desc">Cena a Kabukicho (Shinjuku).</div>
-                        <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=800')">
-                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=800" class="step-img">
-                        </div>
+                        <div class="step-title">Kakekomi Gyoza <a href="https://goo.gl/maps/kakekomi" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Map</a></div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/search/Shinjuku+Love+Object" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Punto di Ritrovo Shinjuku</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">21</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Sushi, Arte & Futuro</h3>
-                    <div class="day-route"><i class="fas fa-vr-cardboard"></i> teamLab → Odaiba</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Arte & Futuro</h3><div class="day-route">Tsukiji → TeamLab → Odaiba</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges"><span class="t-badge tb-subway">Yurikamome Line</span></div>
-                    <p style="font-size:0.85rem">Monorotaia per Odaiba. Lovina consiglia: <strong>Kaisen Don</strong> a Tsukiji.</p>
+                    <div class="transport-header">Metro <span class="t-badge tb-subway">Hibiya</span> <span class="t-badge tb-subway">Yurikamome</span></div>
+                    <div class="transport-details">
+                        Tsukiji Station. Poi Kamiyacho per TeamLab. Poi Shimbashi per Monorotaia Odaiba.
+                        <span class="transport-cost">Totale: ~1.000¥</span>
+                    </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-fish"></i></div>
                         <span class="step-time">08:30</span>
-                        <div class="step-title">Tsukiji Outer Market</div>
+                        <div class="step-title">Tsukiji Market</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-lightbulb"></i></div>
                         <span class="step-time">13:00</span>
-                        <div class="step-title">teamLab Borderless</div>
-                        <div class="step-desc">Azabudai Hills. <span class="booking-alert">PRENOTARE!</span></div>
+                        <div class="step-title">TeamLab Borderless</div>
+                        <div class="step-desc">Azabudai Hills.</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1542998965-c7d5c5f462f9?q=80&w=800')">
                             <img src="https://images.unsplash.com/photo-1542998965-c7d5c5f462f9?q=80&w=800" class="step-img">
                         </div>
@@ -882,33 +703,34 @@
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-robot"></i></div>
                         <span class="step-time">16:00</span>
-                        <div class="step-title">Odaiba</div>
-                        <div class="step-desc">Gundam Gigante.</div>
+                        <div class="step-title">Odaiba Gundam</div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Tsukiji+Outer+Market/Azabudai+Hills/Odaiba+Gundam" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 14</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">22</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Asakusa & Shopping</h3>
-                    <div class="day-route"><i class="fas fa-shopping-bag"></i> Senso-ji</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Asakusa & Shopping</h3><div class="day-route">Senso-ji → Ginza</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges"><span class="t-badge tb-subway">Ginza Line</span></div>
-                    <p style="font-size:0.85rem">Lovina consiglia: <strong>Melon Pan</strong> ad Asakusa!</p>
+                    <div class="transport-header">Metro <span class="t-badge tb-subway">Ginza Line</span></div>
+                    <div class="transport-details">
+                        Asakusa Station.
+                        <span class="transport-cost">Totale: ~600¥</span>
+                    </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-vihara"></i></div>
                         <span class="step-time">09:00</span>
                         <div class="step-title">Senso-ji</div>
-                        <div class="step-desc">Tempio più antico.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg')">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg" class="step-img">
                         </div>
@@ -917,171 +739,66 @@
                         <div class="step-icon"><i class="fas fa-shopping-bag"></i></div>
                         <span class="step-time">14:00</span>
                         <div class="step-title">Shopping Finale</div>
-                        <div class="step-desc">Don Quijote / LOFT.</div>
                     </li>
                 </ul>
+                <div class="action-area">
+                    <a href="https://www.google.com/maps/dir/Hatagaya+Station/Senso-ji/Ginza" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Giorno 15</a>
+                </div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">23</span><span class="date-month">GEN</span></div>
-                <div class="day-info">
-                    <h3>Rientro</h3>
-                    <div class="day-route"><i class="fas fa-plane-departure"></i> Haneda Airport</div>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                <div class="day-info"><h3>Rientro</h3><div class="day-route">Haneda Airport</div></div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-badges"><span class="t-badge tb-taxi">TAXI</span></div>
-                    <p style="font-size: 0.85rem;">Consigliato Taxi per Haneda (~8.000-11.000¥). Usare app GO o Uber.</p>
+                    <div class="transport-header">Taxi <span class="t-badge tb-taxi">GO App</span></div>
+                    <div class="transport-details">
+                        Taxi Hatagaya → Haneda T3.
+                        <span class="transport-cost">Stima: ~9.000¥ - 11.000¥</span>
+                    </div>
                 </div>
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-plane"></i></div>
                         <span class="step-time">09:05</span>
                         <div class="step-title">Decollo</div>
-                        <div class="step-desc">Sayonara Japan!</div>
                     </li>
                 </ul>
-                <div style="text-align: center; margin-top:20px; font-family: 'Noto Sans JP'; color: var(--primary); font-size: 1.5rem;">日本、またね！</div>
-            </div>
-        </div>
-
-    </div> 
-    
-    <div id="accommodations">
-        <h2 style="color: white; text-align:center; margin-bottom: 20px; text-shadow:0 2px 4px rgba(0,0,0,0.5);">I Tuoi Alloggi</h2>
-        
-        <div class="day-card" style="border-left-color: #9C27B0;">
-            <div class="day-header">
-                <div class="day-info">
-                    <h3>Airbnb Osaka</h3>
-                    <div class="day-route">Chuo Ward (Namba Area)</div>
-                </div>
-            </div>
-            <div class="transport-hub">
-                <p>8-12 Gennaio</p>
-                <div class="transport-actions">
-                    <button class="btn-transport" style="background:#222; color:#FFC107; border:none;" onclick="openTaxiCard('osaka_bnb')"><i class="fas fa-taxi"></i> Indirizzo Taxi</button>
-                    <a href="https://maps.app.goo.gl/" target="_blank" class="btn-transport"><i class="fas fa-map-marked-alt"></i> Mappa</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="day-card" style="border-left-color: #9C27B0;">
-            <div class="day-header">
-                <div class="day-info">
-                    <h3>Comfort Hotel Kyoto</h3>
-                    <div class="day-route">Horikawagojo</div>
-                </div>
-            </div>
-            <div class="transport-hub">
-                <p>12-15 Gennaio</p>
-                <div class="transport-actions">
-                    <button class="btn-transport" style="background:#222; color:#FFC107; border:none;" onclick="openTaxiCard('kyoto_hotel')"><i class="fas fa-taxi"></i> Indirizzo Taxi</button>
-                    <a href="https://maps.app.goo.gl/" target="_blank" class="btn-transport"><i class="fas fa-map-marked-alt"></i> Mappa</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="day-card" style="border-left-color: #9C27B0;">
-            <div class="day-header">
-                <div class="day-info">
-                    <h3>Smile Hotel Hiroshima</h3>
-                    <div class="day-route">Nagarekawa-cho</div>
-                </div>
-            </div>
-            <div class="transport-hub">
-                <p>15-17 Gennaio</p>
-                <div class="transport-actions">
-                    <button class="btn-transport" style="background:#222; color:#FFC107; border:none;" onclick="openTaxiCard('hiroshima_hotel')"><i class="fas fa-taxi"></i> Indirizzo Taxi</button>
-                    <a href="https://maps.app.goo.gl/" target="_blank" class="btn-transport"><i class="fas fa-map-marked-alt"></i> Mappa</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="day-card" style="border-left-color: #9C27B0;">
-            <div class="day-header">
-                <div class="day-info">
-                    <h3>Airbnb Hatagaya</h3>
-                    <div class="day-route">Shibuya City</div>
-                </div>
-            </div>
-            <div class="transport-hub">
-                <p>18-23 Gennaio</p>
-                <div class="transport-actions">
-                    <button class="btn-transport" style="background:#222; color:#FFC107; border:none;" onclick="openTaxiCard('tokyo_bnb')"><i class="fas fa-taxi"></i> Indirizzo Taxi</button>
-                    <a href="https://maps.app.goo.gl/" target="_blank" class="btn-transport"><i class="fas fa-map-marked-alt"></i> Mappa</a>
-                </div>
             </div>
         </div>
 
     </div>
 
+    <div id="accommodations">
+        <h2 style="color:white; text-align:center; margin-bottom:20px;">Alloggi</h2>
+        <div class="day-card">
+            <div class="day-header"><div class="day-info"><h3>Osaka Airbnb</h3><p style="font-size:0.8rem">Namba Area</p></div></div>
+            <div style="padding:15px;"><button class="btn-daily-map" onclick="openTaxi('osaka_bnb')">Show Address</button></div>
+        </div>
+        <div class="day-card">
+            <div class="day-header"><div class="day-info"><h3>Kyoto Comfort</h3><p style="font-size:0.8rem">Horikawagojo</p></div></div>
+            <div style="padding:15px;"><button class="btn-daily-map" onclick="openTaxi('kyoto_hotel')">Show Address</button></div>
+        </div>
+        <div class="day-card">
+            <div class="day-header"><div class="day-info"><h3>Hiroshima Smile</h3><p style="font-size:0.8rem">Nagarekawa</p></div></div>
+            <div style="padding:15px;"><button class="btn-daily-map" onclick="openTaxi('hiroshima_hotel')">Show Address</button></div>
+        </div>
+        <div class="day-card">
+            <div class="day-header"><div class="day-info"><h3>Tokyo Airbnb</h3><p style="font-size:0.8rem">Hatagaya</p></div></div>
+            <div style="padding:15px;"><button class="btn-daily-map" onclick="openTaxi('tokyo_bnb')">Show Address</button></div>
+        </div>
+    </div>
+
     <div id="utilities">
-        <h2 style="color: white; text-align:center; margin-bottom: 20px; text-shadow:0 2px 4px rgba(0,0,0,0.5);">Utility & Aiuto</h2>
-
-        <div class="emergency-row">
-            <div>
-                <h3 style="margin-bottom: 5px;">Emergenza</h3>
-                <span style="font-size: 0.8rem;">Polizia: <strong>110</strong> | Ambulanza: <strong>119</strong></span>
-            </div>
-            <div class="emergency-num"><i class="fas fa-phone"></i></div>
-        </div>
-
-        <div class="util-grid">
-            <a href="https://go.mo-t.com/" target="_blank" class="util-card">
-                <div class="util-icon"><i class="fas fa-taxi"></i></div>
-                <div class="util-title">GO Taxi App</div>
-                <div class="util-desc">L'app taxi più usata in Giappone.</div>
-            </a>
-            <a href="https://www.uber.com/" target="_blank" class="util-card">
-                <div class="util-icon"><i class="fab fa-uber"></i></div>
-                <div class="util-title">Uber</div>
-                <div class="util-desc">Funziona bene a Tokyo e Osaka.</div>
-            </a>
-            <a href="https://japantravel.navitime.com/en/" target="_blank" class="util-card">
-                <div class="util-icon"><i class="fas fa-train"></i></div>
-                <div class="util-title">Navitime</div>
-                <div class="util-desc">Migliore app orari treni/metro.</div>
-            </a>
-            <a href="https://translate.google.com/" target="_blank" class="util-card">
-                <div class="util-icon"><i class="fas fa-language"></i></div>
-                <div class="util-title">Translator</div>
-                <div class="util-desc">Usa la fotocamera per leggere menu!</div>
-            </a>
-        </div>
-
+        <h2 style="color:white; text-align:center; margin-bottom:20px;">Info & Aiuto</h2>
         <div class="day-card">
-            <div class="day-header" style="background: #fff;">
-                <div class="day-info">
-                    <h3>🇯🇵 Frasario Rapido</h3>
-                </div>
-            </div>
-            <div class="day-body" style="display:block; padding: 15px;">
-                <p><strong>Grazie:</strong> Arigato Gozaimasu</p>
-                <p><strong>Scusi (attenzione):</strong> Sumimasen</p>
-                <p><strong>Questo treno va a...?:</strong> Kono densha wa [Luogo] e ikimasu ka?</p>
-                <p><strong>Conto per favore:</strong> Okaikei onegaishimasu</p>
-                <p><strong>Non capisco:</strong> Wakarimasen</p>
-            </div>
-        </div>
-
-        <div class="day-card">
-            <div class="day-header" style="background: #fff;">
-                <div class="day-info">
-                    <h3>Fonti Immagini</h3>
-                </div>
-                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-            </div>
-            <div class="day-body" style="padding: 15px;">
-                <ul style="font-size: 0.75rem; color: #666; padding-left: 15px;">
-                    <li>GitHub User Uploads (Copertina, Sfondo)</li>
-                    <li>Wikimedia Commons (Dotonbori, Himeji, etc)</li>
-                    <li>Unsplash (Nara, Tokyo, etc)</li>
-                </ul>
+            <div class="day-body" style="display:block; padding:20px; text-align:center;">
+                <p style="font-size:1.5rem; font-weight:800; color:#d32f2f;">🚑 119 (Ambulanza)</p>
+                <p style="font-size:1.5rem; font-weight:800; color:#1976D2;">🚓 110 (Polizia)</p>
             </div>
         </div>
     </div>
@@ -1089,97 +806,41 @@
 </div>
 
 <div class="bottom-nav">
-    <div class="nav-item active" onclick="switchTab('itinerary', this)">
-        <i class="fas fa-calendar-check"></i>
-        <span>Piani</span>
-    </div>
-    <div class="nav-item" onclick="switchTab('accommodations', this)">
-        <i class="fas fa-bed"></i>
-        <span>Hotel</span>
-    </div>
-    <div class="nav-item" onclick="switchTab('utilities', this)">
-        <i class="fas fa-compass"></i>
-        <span>Info</span>
-    </div>
+    <div class="nav-item active" onclick="switchTab('itinerary', this)"><i class="fas fa-list-ul"></i><span>Piani</span></div>
+    <div class="nav-item" onclick="switchTab('accommodations', this)"><i class="fas fa-bed"></i><span>Hotel</span></div>
+    <div class="nav-item" onclick="switchTab('utilities', this)"><i class="fas fa-info-circle"></i><span>Info</span></div>
 </div>
 
 <script>
-    // DATA FOR TAXI CARDS
-    const taxiData = {
-        'osaka_bnb': {
-            address: '〒542-0063<br>大阪府大阪市中央区',
-            name: 'Chuo Ward, Osaka (Mostra mappa precisa)'
-        },
-        'kyoto_hotel': {
-            address: '〒600-8357<br>京都府京都市下京区柿本町',
-            name: 'Comfort Hotel Kyoto Horikawagojo'
-        },
-        'hiroshima_hotel': {
-            address: '〒730-0028<br>広島県広島市中区流川町7-10',
-            name: 'Smile Hotel Hiroshima'
-        },
-        'tokyo_bnb': {
-            address: '〒151-0072<br>東京都渋谷区幡ヶ谷',
-            name: 'Hatagaya, Shibuya-ku (Mostra mappa precisa)'
-        }
+    // DATA
+    const locations = {
+        'osaka_bnb': { jp: '〒542-0063 大阪府大阪市中央区', name: 'Osaka Airbnb (Namba)' },
+        'kyoto_hotel': { jp: '〒600-8357 京都府京都市下京区柿本町', name: 'Comfort Hotel Kyoto' },
+        'hiroshima_hotel': { jp: '〒730-0028 広島県広島市中区流川町', name: 'Smile Hotel Hiroshima' },
+        'tokyo_bnb': { jp: '〒151-0072 東京都渋谷区幡ヶ谷', name: 'Tokyo Airbnb (Hatagaya)' }
     };
 
-    // LIGHTBOX
-    function openLightbox(imgSrc) {
-        const lightbox = document.getElementById('lightbox');
-        document.getElementById('lightbox-img').src = imgSrc;
-        lightbox.style.display = 'flex';
-    }
-    function closeLightbox() {
-        document.getElementById('lightbox').style.display = 'none';
+    function openTaxi(key) {
+        document.getElementById('taxi-text').innerText = locations[key].jp;
+        document.getElementById('taxi-name').innerText = locations[key].name;
+        document.getElementById('taxi-modal').style.display = 'flex';
     }
 
-    // TAXI MODAL
-    function openTaxiCard(key) {
-        const modal = document.getElementById('taxi-modal');
-        const data = taxiData[key];
-        if(data) {
-            document.getElementById('taxi-address-text').innerHTML = data.address;
-            document.getElementById('taxi-hotel-name').innerText = data.name;
-            modal.style.display = 'flex';
-        }
-    }
-    function closeTaxiCard() {
-        document.getElementById('taxi-modal').style.display = 'none';
+    function openLightbox(src) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
     }
 
-    // TABS
-    function switchTab(tabId, btnElement) {
-        document.getElementById('itinerary').style.display = 'none';
-        document.getElementById('accommodations').style.display = 'none';
-        document.getElementById('utilities').style.display = 'none';
-        
-        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-        
-        document.getElementById(tabId).style.display = 'block';
-        btnElement.classList.add('active');
-        
-        window.scrollTo(0, 0);
-    }
-
-    // ACCORDION
     function toggleCard(header) {
-        const card = header.parentElement;
-        const wasActive = card.classList.contains('active');
-        
-        // Close others (Optional: comment out if you want multiple open)
-        // document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+        header.parentElement.classList.toggle('active');
+    }
 
-        if(!wasActive) {
-            card.classList.add('active');
-            setTimeout(() => {
-                const yOffset = -20; 
-                const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                window.scrollTo({top: y, behavior: 'smooth'});
-            }, 300);
-        } else {
-            card.classList.remove('active');
-        }
+    function switchTab(id, btn) {
+        document.querySelectorAll('.container > div').forEach(d => d.style.display='none');
+        document.getElementById(id).style.display='block';
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        btn.classList.add('active');
+        window.scrollTo(0,0);
     }
 </script>
 
