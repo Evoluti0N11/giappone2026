@@ -16,7 +16,7 @@
             --dark: #111111;
             --text: #2c3e50;
             --cat: #E67E22; /* Arancione Serena */
-            --kobe: #8E44AD;
+            --kobe: #29B6F6; /* Celestino Kobe */
             --lovina: #FF6F61; /* Colore Tips */
             --glass: rgba(255, 255, 255, 0.98);
             --radius: 16px;
@@ -206,15 +206,21 @@
         #itinerary, #accommodations, #utilities { display: none; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Special Colors */
+        /* Special Colors - Giorno Gatti */
         .special-cat { border-left-color: var(--cat); }
         .special-cat .step-icon { color: var(--cat); border-color: var(--cat); }
         .special-cat .toggle-icon { color: var(--cat); }
         .special-cat.active .toggle-icon { background: var(--cat); color: white; }
-        /* FIX: Colore arancione sulla data anche quando chiusa */
         .special-cat .date-num, .special-cat .date-month { color: var(--cat) !important; }
+        .special-cat .day-info h3 { color: var(--cat) !important; }
 
+        /* Special Colors - Giorno Kobe (Celestino) */
         .special-kobe { border-left-color: var(--kobe); }
+        .special-kobe .step-icon { color: var(--kobe); border-color: var(--kobe); }
+        .special-kobe .toggle-icon { color: var(--kobe); }
+        .special-kobe.active .toggle-icon { background: var(--kobe); color: white; }
+        .special-kobe .date-num, .special-kobe .date-month { color: var(--kobe) !important; }
+        .special-kobe .day-info h3 { color: var(--kobe) !important; }
 
         /* Goodbye Section */
         .goodbye-container { text-align: center; margin-top: 15px; padding: 15px; background: #fff; border-radius: 12px; }
@@ -296,7 +302,7 @@
                     <div class="transport-details">
                         Prendere <strong>Nankai Airport Express</strong> da KIX fino a <strong>Namba Station</strong>.<br>
                         Poi Taxi per Cosy House (Tohei) è consigliato.
-                        <span class="transport-cost">Costo: ~1.100¥ + Taxi</span>
+                        <span class="transport-cost">Costo: ~1.100¥ (~7€) + Taxi</span>
                     </div>
                 </div>
 
@@ -402,7 +408,7 @@
                     <div class="transport-header">Treno <span class="t-badge tb-jr">Kintetsu/JR</span></div>
                     <div class="transport-details">
                         Kintetsu Uehommachi (vicino a casa) → Kintetsu-Nara.
-                        <span class="transport-cost">Totale A/R: ~1.200¥</span>
+                        <span class="transport-cost">Totale A/R: ~1.200¥ (~7.50€)</span>
                     </div>
                 </div>
 
@@ -448,7 +454,7 @@
                     <div class="transport-header">Treno <span class="t-badge tb-jr">Hanshin</span></div>
                     <div class="transport-details">
                         Namba (o Uehommachi) → Kobe-Sannomiya.
-                        <span class="transport-cost">Totale A/R: ~1.200¥</span>
+                        <span class="transport-cost">Totale A/R: ~1.200¥ (~7.50€)</span>
                     </div>
                 </div>
                 <ul class="steps-list">
@@ -489,7 +495,7 @@
                     <div class="transport-header">Spostamento <span class="t-badge tb-jr">JR Kyoto</span></div>
                     <div class="transport-details">
                         Osaka Station → Kyoto Station. Hotel vicino a Toji Station (Sud).
-                        <span class="transport-cost">Treno: ~600¥</span>
+                        <span class="transport-cost">Treno: ~600¥ (~4€)</span>
                     </div>
                 </div>
 
@@ -541,7 +547,7 @@
                     <div class="transport-header">Bus & Treno <span class="t-badge tb-bus">Bus 205</span></div>
                     <div class="transport-details">
                         Bus per Kinkaku-ji. Treno Randen per Arashiyama.
-                        <span class="transport-cost">Totale: ~1.000¥</span>
+                        <span class="transport-cost">Totale: ~1.000¥ (~6€)</span>
                     </div>
                 </div>
 
@@ -595,7 +601,7 @@
                     <div class="transport-header">Bus <span class="t-badge tb-bus">City Bus</span></div>
                     <div class="transport-details">
                         Usa Bus Pass o IC Card. Zona Higashiyama/Gion.
-                        <span class="transport-cost">Totale: ~700¥</span>
+                        <span class="transport-cost">Totale: ~700¥ (~4.50€)</span>
                     </div>
                 </div>
 
@@ -735,7 +741,7 @@
                     <div class="transport-header">Treno <span class="t-badge tb-jr">Sanyo Line</span></div>
                     <div class="transport-details">
                         Shinkansen per Okayama. Treno locale per Kurashiki.
-                        <span class="transport-cost">Locale: ~330¥</span>
+                        <span class="transport-cost">Locale: ~330¥ (~2€)</span>
                     </div>
                 </div>
                 <ul class="steps-list">
@@ -778,7 +784,7 @@
                     <div class="transport-header">Nozomi & Taxi <span class="t-badge tb-shinkansen">Nozomi</span> <span class="t-badge tb-taxi">Taxi</span></div>
                     <div class="transport-details">
                         Okayama → Tokyo Station. Taxi per Calm House (Hatagaya).
-                        <span class="transport-cost">Taxi: ~3.500¥</span>
+                        <span class="transport-cost">Taxi: ~3.500¥ (~22€)</span>
                     </div>
                 </div>
 
@@ -836,7 +842,7 @@
                     <div class="transport-header">Metro <span class="t-badge tb-subway">Chiyoda</span> <span class="t-badge tb-jr">Odakyu</span></div>
                     <div class="transport-details">
                         Da Hatagaya per Gotokuji (via Meidaimae/Setagaya).
-                        <span class="transport-cost">Totale: ~500¥</span>
+                        <span class="transport-cost">Totale: ~500¥ (~3€)</span>
                     </div>
                 </div>
                 <ul class="steps-list">
@@ -868,31 +874,61 @@
         <div class="day-card">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">20</span><span class="date-month">GEN</span></div>
-                <div class="day-info"><h3>Monte Fuji</h3><div class="day-route">Bus Tour → Kabukicho</div></div>
+                <div class="day-info"><h3>Monte Fuji Private Tour</h3><div class="day-route">Airbnb → Fuji → Hakone</div></div>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
                 <div class="transport-hub">
-                    <div class="transport-header">Bus Tour</div>
+                    <div class="transport-header">Private Van <span class="t-badge tb-taxi">Pickup Incluso</span></div>
                     <div class="transport-details">
-                        Ritrovo solitamente a Shinjuku (SMBC Bank/Love Object).
+                        Tour Privato con Driver Inglese. <br>
+                        <strong>Ritiro:</strong> Ore 09:00 direttamente al Calm House.
+                        <div style="margin-top:8px;">
+                            <a href="https://www.getyourguide.com/en-gb/tokyo-l193/tokyo-mt-fuji-hakone-private-custom-tour-english-driver-t738036/?date_from=2026-01-20&date_to=2026-01-20&_pc=1%2C4" target="_blank" class="rest-link" style="background:#BC002D; color:white; border:none; padding:6px 12px; font-size:0.8rem;">
+                                <i class="fas fa-ticket-alt"></i> Dettagli Prenotazione
+                            </a>
+                        </div>
                     </div>
                 </div>
+
                 <ul class="steps-list">
                     <li class="step">
+                        <div class="step-icon"><i class="fas fa-car"></i></div>
+                        <span class="step-time">09:00</span>
+                        <div class="step-title">Pickup al Calm House</div>
+                        <div class="step-desc">Il driver verrà a prendervi all'indirizzo di Hatagaya. (Durata viaggio: ~100 min)</div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-gopuram"></i></div>
+                        <span class="step-time">11:00</span>
+                        <div class="step-title">Chureito Pagoda</div>
+                        <div class="step-desc">La vista iconica del Fuji con la pagoda e il santuario Arakura Sengen. (45 min)</div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-water"></i></div>
+                        <span class="step-time">12:30</span>
+                        <div class="step-title">Oshino Hakkai</div>
+                        <div class="step-desc">Villaggio tradizionale con 8 stagni sacri. Ottimo per street food. (45 min)</div>
+                    </li>
+                    <li class="step">
                         <div class="step-icon"><i class="fas fa-mountain"></i></div>
-                        <span class="step-time">10:30</span>
-                        <div class="step-title">Lago Kawaguchi</div>
+                        <span class="step-time">14:00</span>
+                        <div class="step-title">Lago Kawaguchi & Ropeway</div>
+                        <div class="step-desc">Salita con la funivia Mt. Kachi Kachi (vista panoramica) o visita al parco Oishi.</div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-map-signs"></i></div>
+                        <span class="step-time">16:00</span>
+                        <div class="step-title">Opzioni Custom (Saiko/Hakone)</div>
+                        <div class="step-desc">A scelta: Saiko Iyashi-no-Sato (villaggio antico) OPPURE spostamento verso Hakone/Lago Ashi se il traffico lo permette.</div>
                     </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:00</span>
-                        <div class="step-title">Kakekomi Gyoza <a href="https://www.google.com/maps/search/?api=1&query=Kakekomi+Gyoza+Shinjuku" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Mappa</a></div>
+                        <div class="step-title">Rientro e Cena: Kakekomi Gyoza</div>
+                        <div class="step-desc">Drop-off a Shinjuku/Kabukicho per cena. <a href="https://www.google.com/maps/search/?api=1&query=Kakekomi+Gyoza+Shinjuku" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Mappa</a></div>
                     </li>
                 </ul>
-                <div class="action-area">
-                    <a href="https://www.google.com/maps/place/Shinjuku+Station" target="_blank" class="btn-daily-map"><i class="fas fa-map-marked-alt"></i> Punto di Ritrovo Shinjuku</a>
-                </div>
             </div>
         </div>
 
@@ -913,7 +949,7 @@
                     <div class="transport-header">Metro <span class="t-badge tb-subway">Hibiya</span> <span class="t-badge tb-subway">Yurikamome</span></div>
                     <div class="transport-details">
                         Tsukiji Station. Poi Kamiyacho per TeamLab. Poi Shimbashi per Monorotaia Odaiba.
-                        <span class="transport-cost">Totale: ~1.000¥</span>
+                        <span class="transport-cost">Totale: ~1.000¥ (~6€)</span>
                     </div>
                 </div>
 
@@ -970,7 +1006,7 @@
                     <div class="transport-header">Metro <span class="t-badge tb-subway">Ginza Line</span></div>
                     <div class="transport-details">
                         Asakusa Station.
-                        <span class="transport-cost">Totale: ~600¥</span>
+                        <span class="transport-cost">Totale: ~600¥ (~4€)</span>
                     </div>
                 </div>
                 <ul class="steps-list">
@@ -1012,9 +1048,19 @@
                     <div class="transport-header">Taxi <span class="t-badge tb-taxi">GO App</span></div>
                     <div class="transport-details">
                         Taxi Hatagaya → Haneda T3.
-                        <span class="transport-cost">Stima: ~9.000¥ - 11.000¥</span>
+                        <span class="transport-cost">Stima: ~10.500¥ (~65€)</span>
                     </div>
                 </div>
+
+                <div class="taxi-calc">
+                    <div class="taxi-calc-head"><i class="fas fa-calculator"></i> Taxi Squad Mode (Aeroporto)</div>
+                    <div class="taxi-price-box">
+                        <div class="taxi-total">~10.500¥ <span style="font-size:0.7rem; font-weight:400; color:#666;">(Hatagaya -> Haneda)</span></div>
+                        <div class="taxi-split">A persona: <span>~16.50€</span></div>
+                    </div>
+                    <p style="font-size:0.7rem; color:#888; margin-top:5px;">Con 4 persone e bagagli è super conveniente e comodo.</p>
+                </div>
+
                 <ul class="steps-list">
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-plane"></i></div>
@@ -1147,11 +1193,29 @@
 
                     <div class="phrase-card">
                         <div class="phrase-content">
-                            <span class="p-jp">はい / いいえ</span>
-                            <span class="p-ro">Hai / Iie</span>
-                            <span class="p-it">Sì / No</span>
+                            <span class="p-jp">イタリア語は話せますか？</span>
+                            <span class="p-ro">Itaria-go wa hanasemasu ka?</span>
+                            <span class="p-it">Parla Italiano?</span>
                         </div>
-                        <button class="btn-speak" onclick="speak('Hai, Iie')"><i class="fas fa-volume-up"></i></button>
+                        <button class="btn-speak" onclick="speak('Itaria-go wa hanasemasu ka')"><i class="fas fa-volume-up"></i></button>
+                    </div>
+
+                    <div class="phrase-card">
+                        <div class="phrase-content">
+                            <span class="p-jp">スペイン語は話せますか？</span>
+                            <span class="p-ro">Supein-go wa hanasemasu ka?</span>
+                            <span class="p-it">Parla Spagnolo?</span>
+                        </div>
+                        <button class="btn-speak" onclick="speak('Supein-go wa hanasemasu ka')"><i class="fas fa-volume-up"></i></button>
+                    </div>
+
+                    <div class="phrase-card">
+                        <div class="phrase-content">
+                            <span class="p-jp">フランス語は話せますか？</span>
+                            <span class="p-ro">Furansu-go wa hanasemasu ka?</span>
+                            <span class="p-it">Parla Francese?</span>
+                        </div>
+                        <button class="btn-speak" onclick="speak('Furansu-go wa hanasemasu ka')"><i class="fas fa-volume-up"></i></button>
                     </div>
 
                     <div class="phrase-card">
@@ -1192,11 +1256,20 @@
 
                     <div class="phrase-card">
                         <div class="phrase-content">
-                            <span class="p-jp">いくらですか？</span>
-                            <span class="p-ro">Ikura desu ka?</span>
-                            <span class="p-it">Quanto costa?</span>
+                            <span class="p-jp">具合が悪いです</span>
+                            <span class="p-ro">Guai ga warui desu</span>
+                            <span class="p-it">Mi sento male</span>
                         </div>
-                        <button class="btn-speak" onclick="speak('Ikura desu ka')"><i class="fas fa-volume-up"></i></button>
+                        <button class="btn-speak" onclick="speak('Guai ga warui desu')"><i class="fas fa-volume-up"></i></button>
+                    </div>
+
+                    <div class="phrase-card">
+                        <div class="phrase-content">
+                            <span class="p-jp">アレルギーがあります</span>
+                            <span class="p-ro">Arerugii ga arimasu</span>
+                            <span class="p-it">Ho un'allergia</span>
+                        </div>
+                        <button class="btn-speak" onclick="speak('Arerugii ga arimasu')"><i class="fas fa-volume-up"></i></button>
                     </div>
 
                     <div class="phrase-card">
