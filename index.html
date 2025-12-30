@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Itinerario di viaggio Giappone 2026 - Osaka, Kyoto, Hiroshima, Tokyo. Master Plan Executive.">
     <title>Giappone 2026 | Master Plan Executive</title>
     
     <link rel="icon" type="image/jpeg" href="https://github.com/Evoluti0N11/giappone2026/blob/main/Giappone-immagine-principale.jpg?raw=true">
@@ -27,6 +28,8 @@
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
             --booking: #d32f2f; /* Rosso per prenotazioni */
         }
+
+        html { scroll-behavior: smooth; }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -475,7 +478,7 @@
                         <div class="step-title">Dotonbori Neon Lights</div>
                         <div class="step-desc">Prima esplorazione a piedi lungo il canale. Foto di rito con il Glico Man illuminato.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg')">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" class="step-img" alt="Dotonbori">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg" class="step-img" loading="lazy" alt="Dotonbori">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
@@ -515,7 +518,7 @@
                         <div class="step-title">Acquario Kaiyukan <span class="booking-alert">Biglietto Online Consigliato</span></div>
                         <div class="step-desc">Famoso per lo squalo balena. Meglio prendere i biglietti online per evitare code.</div>
                         <div class="step-img-container" onclick="openLightbox('https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1648205341/osaka/H_00496_001')">
-                            <img src="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1648205341/osaka/H_00496_001" class="step-img" alt="Kaiyukan">
+                            <img src="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1648205341/osaka/H_00496_001" class="step-img" loading="lazy" alt="Kaiyukan">
                         </div>
                     </li>
                     <li class="step">
@@ -524,7 +527,7 @@
                         <div class="step-title">Shinsekai & Tsutenkaku</div>
                         <div class="step-desc">Quartiere nostalgico e torre Tsutenkaku. Atmosfera retrò unica.</div>
                         <div class="step-img-container" onclick="openLightbox('https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1675232782/osaka/Osaka_s_id26_1')">
-                            <img src="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1675232782/osaka/Osaka_s_id26_1" class="step-img" alt="Shinsekai">
+                            <img src="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1675232782/osaka/Osaka_s_id26_1" class="step-img" loading="lazy" alt="Shinsekai">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
@@ -539,8 +542,8 @@
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">10</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
-                    <h3>I Cervi Sacri di Nara</h3>
-                    <div class="day-route"><i class="fas fa-torii-gate"></i> Nara Park → Todai-ji</div>
+                    <h3>I Cervi Sacri & Gyoza</h3>
+                    <div class="day-route"><i class="fas fa-torii-gate"></i> Nara Park → Temma (Osaka)</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
@@ -548,13 +551,13 @@
                 <div class="logistics">
                     <div class="log-item">
                         <i class="fas fa-train"></i> 
-                        <span>Treno Kintetsu da Namba a Kintetsu Nara (~40 min). <span class="price-tag">Stima A/R: ~1.400¥ (9€)</span>. Usare IC Card.</span>
+                        <span>Treno Kintetsu/JR per Nara. Ritorno consigliato via JR Yamatoji Line per fermarsi a Temma. <span class="price-tag">Stima A/R: ~1.400¥ (9€)</span>.</span>
                     </div>
                 </div>
                 
                 <div class="local-tip">
                     <div class="local-tip-title"><i class="fas fa-info-circle"></i> Lovina's Local Tip</div>
-                    <p><strong>I Cervi sono ovunque!</strong> Non è necessario entrare nel parco specifico per vederli. Consiglio di visitare prima i Templi e Santuari. Inoltre, al <strong>Kasuga Taisha</strong>, l'area a pagamento con le lanterne è bella ma molto piccola, consideratela come una piccola donazione al santuario.</p>
+                    <p><strong>I Cervi sono ovunque!</strong> Non è necessario entrare nel parco specifico per vederli. Consiglio di visitare prima i Templi e Santuari.</p>
                 </div>
 
                 <ul class="steps-list">
@@ -564,7 +567,23 @@
                         <div class="step-title">Parco di Nara & Todai-ji</div>
                         <div class="step-desc">Incontro con i cervi liberi e visita al Grande Buddha.</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800')">
-                            <img src="https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800" class="step-img" alt="Nara Deer">
+                            <img src="https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?q=80&w=800" class="step-img" loading="lazy" alt="Nara Deer">
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="step-time">19:30</span>
+                        <div class="step-title">Cena: Gyozaclub Rocklee</div>
+                        <div class="step-desc">
+                            Gyoza creativi in un locale vibrante zona Temma/Kita Ward. Contrasto perfetto dopo il relax di Nara.
+                            <br><span style="font-size: 0.8rem; color:#666;">7-5 Ikedacho, Kita Ward (Osaka).</span>
+                            <div style="margin-top:8px;">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Gyozaclub+Rocklee+Osaka" target="_blank" class="btn-klook" style="background: #e74c3c; font-size: 0.75rem;"><i class="fas fa-map-marker-alt"></i> Vedi Posizione</a>
+                            </div>
+                        </div>
+                        <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1626322837333-e5d710d510b1?q=80&w=800')">
+                            <img src="https://images.unsplash.com/photo-1626322837333-e5d710d510b1?q=80&w=800" class="step-img" loading="lazy" alt="Gyoza Dinner">
+                            <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
                 </ul>
@@ -601,7 +620,7 @@
                         <div class="step-title">Pranzo: Kobe Beef <span class="booking-alert">Prenotare Ora</span></div>
                         <div class="step-desc">L'esperienza culinaria del viaggio. Ristorante Mouriya (consigliato).</div>
                         <div class="step-img-container" onclick="openLightbox('https://www.mouriya.co.jp/wp/wp-content/themes/mouriya/img/pc_top_photo7.jpg')">
-                            <img src="https://www.mouriya.co.jp/wp/wp-content/themes/mouriya/img/pc_top_photo7.jpg" class="step-img" alt="Kobe Beef Mouriya">
+                            <img src="https://www.mouriya.co.jp/wp/wp-content/themes/mouriya/img/pc_top_photo7.jpg" class="step-img" loading="lazy" alt="Kobe Beef Mouriya">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
@@ -611,7 +630,7 @@
                         <div class="step-title">Kobe Harborland</div>
                         <div class="step-desc">Passeggiata al porto illuminato (Mosaic) e vista della Kobe Port Tower.</div>
                         <div class="step-img-container" onclick="openLightbox('https://media.istockphoto.com/id/534225859/it/foto/kobe-giappone.jpg?s=612x612&w=0&k=20&c=tUqlPh3dykXaIIv9AX65Afa2QqKaRK4lXUoIJK8dGjc=')">
-                            <img src="https://media.istockphoto.com/id/534225859/it/foto/kobe-giappone.jpg?s=612x612&w=0&k=20&c=tUqlPh3dykXaIIv9AX65Afa2QqKaRK4lXUoIJK8dGjc=" class="step-img" alt="Kobe Port">
+                            <img src="https://media.istockphoto.com/id/534225859/it/foto/kobe-giappone.jpg?s=612x612&w=0&k=20&c=tUqlPh3dykXaIIv9AX65Afa2QqKaRK4lXUoIJK8dGjc=" class="step-img" loading="lazy" alt="Kobe Port">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
@@ -663,7 +682,7 @@
                         <div class="step-title">Fushimi Inari Taisha</div>
                         <div class="step-desc">Camminata attraverso i mille torii rossi.</div>
                         <div class="step-img-container" onclick="openLightbox('https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800')">
-                            <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800" class="step-img" alt="Fushimi Inari">
+                            <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=800" class="step-img" loading="lazy" alt="Fushimi Inari">
                         </div>
                     </li>
                 </ul>
@@ -709,7 +728,7 @@
                         <div class="step-title">Arashiyama (Pomeriggio)</div>
                         <div class="step-desc">Foresta di Bambù e tempio Tenryu-ji con la luce più morbida del pomeriggio.</div>
                         <div class="step-img-container" onclick="openLightbox('https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg')">
-                            <img src="https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg" class="step-img" alt="Arashiyama Bamboo">
+                            <img src="https://photos.smugmug.com/Kyoto/Kyoto-Things-To-Do/i-X4SbQPn/0/L/arashiyama-bamboo-grove-M.jpg" class="step-img" loading="lazy" alt="Arashiyama Bamboo">
                         </div>
                     </li>
                     <li class="step">
@@ -759,7 +778,7 @@
                         <div class="step-title">Kiyomizu-dera</div>
                         <div class="step-desc">Tempio dell'Acqua Pura e passeggiata a Sannenzaka.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/6/61/Kiyomizu-dera_%2818199680391%29.jpg')">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Kiyomizu-dera_%2818199680391%29.jpg" class="step-img" alt="Kiyomizu">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Kiyomizu-dera_%2818199680391%29.jpg" class="step-img" loading="lazy" alt="Kiyomizu">
                         </div>
                     </li>
                     
@@ -780,7 +799,7 @@
                         <div class="step-title">Nintendo Kyoto Store</div>
                         <div class="step-desc">Visita ufficiale allo store Nintendo Kyoto (c/o Kyoto Takashimaya S.C. T8).</div>
                         <div class="step-img-container" onclick="openLightbox('https://museum.nintendo.com/assets/images/shop/image_slide01.webp')">
-                            <img src="https://museum.nintendo.com/assets/images/shop/image_slide01.webp" class="step-img" alt="Nintendo Kyoto Store">
+                            <img src="https://museum.nintendo.com/assets/images/shop/image_slide01.webp" class="step-img" loading="lazy" alt="Nintendo Kyoto Store">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
@@ -833,7 +852,7 @@
                         <div class="step-title">Castello di Himeji</div>
                         <div class="step-desc">Il castello bianco, patrimonio UNESCO. Utilizzare i coin lockers in stazione per i bagagli.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/330px-Ch%C3%A2teau_de_Himeji02.jpg')">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/330px-Ch%C3%A2teau_de_Himeji02.jpg" class="step-img" alt="Himeji">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/330px-Ch%C3%A2teau_de_Himeji02.jpg" class="step-img" loading="lazy" alt="Himeji">
                         </div>
                     </li>
                     <li class="step">
@@ -878,7 +897,7 @@
                         <div class="step-title">Isola di Miyajima</div>
                         <div class="step-desc">Traghetto per l'isola del Torii galleggiante. Attenzione ai cervi che mangiano la carta!</div>
                         <div class="step-img-container" onclick="openLightbox('https://www.watabi.it/blog/wp-content/uploads/2021/04/miyajima-copertina.jpg')">
-                            <img src="https://www.watabi.it/blog/wp-content/uploads/2021/04/miyajima-copertina.jpg" class="step-img" alt="Miyajima">
+                            <img src="https://www.watabi.it/blog/wp-content/uploads/2021/04/miyajima-copertina.jpg" class="step-img" loading="lazy" alt="Miyajima">
                         </div>
                     </li>
                 </ul>
@@ -928,7 +947,7 @@
                         <div class="step-title">Korakuen & Castello Nero</div>
                         <div class="step-desc">Visita al giardino Korakuen e al "Castello del Corvo" (Okayama-jo) che si trova proprio di fronte, attraversando il ponte.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Okayama_Castle_and_Asahi_River.jpg/1200px-Okayama_Castle_and_Asahi_River.jpg')">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Okayama_Castle_and_Asahi_River.jpg/1200px-Okayama_Castle_and_Asahi_River.jpg" class="step-img" alt="Okayama Castle">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Okayama_Castle_and_Asahi_River.jpg/1200px-Okayama_Castle_and_Asahi_River.jpg" class="step-img" loading="lazy" alt="Okayama Castle">
                         </div>
                     </li>
                     <li class="step">
@@ -937,7 +956,7 @@
                         <div class="step-title">Kurashiki Bikan Quarter</div>
                         <div class="step-desc">Quartiere storico con canali, salici e antichi magazzini bianchi convertiti in negozi e caffè. Atmosfera magica.</div>
                         <div class="step-img-container" onclick="openLightbox('https://www.japan-guide.com/g18/2141_01.jpg')">
-                            <img src="https://www.japan-guide.com/g18/2141_01.jpg" class="step-img" alt="Kurashiki Canal">
+                            <img src="https://www.japan-guide.com/g18/2141_01.jpg" class="step-img" loading="lazy" alt="Kurashiki Canal">
                             <span class="img-hint"><i class="fas fa-expand"></i> Espandi</span>
                         </div>
                     </li>
@@ -1042,7 +1061,7 @@
                         <div class="step-title">Tempio Gotoku-ji</div>
                         <div class="step-desc">Il leggendario tempio dei mille gatti bianchi.</div>
                         <div class="step-img-container" onclick="openLightbox('https://matteoingiappone.s3.eu-central-1.amazonaws.com/wp-content/uploads/2020/07/Gotokuji-1.jpg')">
-                            <img src="https://matteoingiappone.s3.eu-central-1.amazonaws.com/wp-content/uploads/2020/07/Gotokuji-1.jpg" class="step-img" alt="Gotokuji">
+                            <img src="https://matteoingiappone.s3.eu-central-1.amazonaws.com/wp-content/uploads/2020/07/Gotokuji-1.jpg" class="step-img" loading="lazy" alt="Gotokuji">
                         </div>
                     </li>
                     <li class="step">
@@ -1062,8 +1081,8 @@
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">20</span><span class="date-month">GEN</span></div>
                 <div class="day-info">
-                    <h3>Tour Monte Fuji</h3>
-                    <div class="day-route"><i class="fas fa-mountain"></i> Bus Tour Guidato</div>
+                    <h3>Tour Monte Fuji & Gyoza</h3>
+                    <div class="day-route"><i class="fas fa-mountain"></i> Bus Tour → Kabukicho</div>
                 </div>
                 <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
             </div>
@@ -1081,6 +1100,18 @@
                         <div class="step-title">Lago Kawaguchi</div>
                         <div class="step-desc">Vista iconica del Fuji e Oishi Park.</div>
                         <a href="https://www.klook.com/en-US/activity/93901-mtfuji-one-day-tour-tokyo/" target="_blank" class="btn-klook">Vedi Tour su Klook</a>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="step-time">19:00</span>
+                        <div class="step-title">Cena: Kakekomi Gyoza</div>
+                        <div class="step-desc">
+                            Gyoza aperto 24h nel cuore di Kabukicho (Shinjuku). Perfetto per ricaricarsi appena scesi dal bus del tour.
+                            <br><span style="font-size: 0.8rem; color:#666;">1 Chome-12-2 Kabukicho, Shinjuku.</span>
+                            <div style="margin-top:8px;">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Kakekomi+Gyoza+Shinjuku" target="_blank" class="btn-klook" style="background: #e74c3c; font-size: 0.75rem;"><i class="fas fa-map-marker-alt"></i> Vedi Posizione</a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 <div class="action-area">
@@ -1124,7 +1155,7 @@
                         <div class="step-title">teamLab Borderless <span class="booking-alert">Prenotazione Obbligatoria</span></div>
                         <div class="step-desc">Arte digitale immersiva (Azabudai Hills). I biglietti vanno esauriti mesi prima, prenotare appena aprono le vendite!</div>
                         <div class="step-img-container" onclick="openLightbox('https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/dmyoapohHQXx7nQ5dQwjad/width=3840,quality=80')">
-                            <img src="https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/dmyoapohHQXx7nQ5dQwjad/width=3840,quality=80" class="step-img" alt="TeamLab">
+                            <img src="https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/dmyoapohHQXx7nQ5dQwjad/width=3840,quality=80" class="step-img" loading="lazy" alt="TeamLab">
                         </div>
                     </li>
                     <li class="step">
@@ -1169,7 +1200,7 @@
                         <div class="step-title">Senso-ji</div>
                         <div class="step-desc">Il tempio più antico di Tokyo.</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg')">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg" class="step-img" alt="Senso-ji">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg" class="step-img" loading="lazy" alt="Senso-ji">
                         </div>
                     </li>
                     <li class="step">
