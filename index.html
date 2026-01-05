@@ -140,35 +140,44 @@
 
         /* FLIGHT WIDGET - ENHANCED */
         .flight-widget {
-            margin: 15px; background: white; border-radius: 14px;
-            border: 1px solid #e0e0e0; overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            margin: 15px; background: linear-gradient(145deg, #1a237e, #0d47a1); 
+            border-radius: 16px; overflow: hidden; color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative;
         }
         .fw-header {
-            background: #002F6C; color: white; padding: 10px 15px;
-            font-size: 0.8rem; font-weight: 800; letter-spacing: 1px;
+            background: rgba(0,0,0,0.2); padding: 10px 15px;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .fw-body { padding: 15px; display: flex; flex-direction: column; gap: 10px; }
-        .fw-top-row { display: flex; justify-content: space-between; align-items: center; }
-        .airline-logo { height: 30px; object-fit: contain; }
-        .status-badge { 
-            background: #4CAF50; color: white; padding: 4px 8px; 
-            border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; 
+        .fw-live-indicator { display: flex; align-items: center; gap: 5px; color: #00E676; font-weight: 800; }
+        .fw-pulse { width: 8px; height: 8px; background: #00E676; border-radius: 50%; animation: pulse-green 1.5s infinite; }
+        @keyframes pulse-green { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+        
+        .fw-body { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .fw-route-row { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .fw-code { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; }
+        .fw-city { font-size: 0.8rem; opacity: 0.8; font-weight: 600; text-transform: uppercase; }
+        .fw-time { font-size: 1.1rem; font-weight: 700; margin-top: 5px; display: block; }
+        
+        .fw-plane-icon { 
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            font-size: 1.5rem; color: rgba(255,255,255,0.9); 
+            background: rgba(255,255,255,0.1); padding: 10px; border-radius: 50%;
         }
-        .fw-route { 
-            display: flex; justify-content: space-between; align-items: center; 
-            font-size: 1.4rem; font-weight: 900; color: #333; margin: 5px 0;
+        
+        .fw-details { 
+            background: rgba(0,0,0,0.2); border-radius: 10px; padding: 10px; 
+            display: flex; justify-content: space-between; font-size: 0.8rem;
         }
-        .fw-line { flex: 1; height: 2px; background: #ddd; margin: 0 15px; position: relative; text-align: center; }
-        .fw-line::after { content: '✈'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); color: #002F6C; font-size: 1.2rem; background: white; padding: 0 5px; }
-        .fw-airports { display: flex; justify-content: space-between; font-size: 0.75rem; color: #666; font-weight: 600; text-transform: uppercase; }
-        .fw-info { font-size: 0.75rem; color: #666; background: #f5f5f5; padding: 8px; border-radius: 6px; text-align: center; }
+        .fw-d-item { display: flex; flex-direction: column; gap: 2px; }
+        .fw-label { font-size: 0.65rem; opacity: 0.6; text-transform: uppercase; }
+        
         .fw-link {
-            display: block; text-align: center; background: #002F6C; color: white;
-            text-decoration: none; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
-            margin-top: 5px; box-shadow: 0 4px 6px rgba(0,47,108,0.2);
+            display: block; text-align: center; background: white; color: #0d47a1;
+            text-decoration: none; padding: 12px; border-radius: 12px; font-size: 0.9rem; font-weight: 800;
+            margin-top: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.2s;
         }
+        .fw-link:active { transform: scale(0.98); opacity: 0.9; }
 
         /* TRANSPORT HUB - SIMPLIFIED */
         .transport-hub { background: #f8f9fa; padding: 15px; border-bottom: 1px solid #eee; margin-bottom: 15px; }
@@ -489,23 +498,41 @@
             <div class="day-body">
                 
                 <div class="flight-widget">
-                    <div class="fw-header"><i class="fas fa-plane-arrival"></i> BOARDING PASS • ARRIVAL</div>
+                    <div class="fw-header">
+                        <div class="fw-live-indicator"><div class="fw-pulse"></div> LIVE TRACKING</div>
+                        <div>FLIGHTRADAR24</div>
+                    </div>
                     <div class="fw-body">
-                        <div class="fw-top-row">
-                            <img src="https://toppng.com/uploads/preview/klm-airlines-vector-logo-free-115740898092il9h1e0so.png" class="airline-logo" alt="KLM">
-                            <span class="status-badge">In Arrivo</span>
+                        <div class="fw-route-row">
+                            <div class="fw-d-item" style="align-items: flex-start;">
+                                <span class="fw-code">AMS</span>
+                                <span class="fw-city">Amsterdam</span>
+                                <span class="fw-time">14:35 <small>(07 Gen)</small></span>
+                            </div>
+                            <div class="fw-plane-icon"><i class="fas fa-plane"></i></div>
+                            <div class="fw-d-item" style="align-items: flex-end;">
+                                <span class="fw-code">KIX</span>
+                                <span class="fw-city">Osaka Kansai</span>
+                                <span class="fw-time">11:20 <small>(08 Gen)</small></span>
+                            </div>
                         </div>
-                        <div class="fw-route">
-                            <div>14:35 <small style="font-size:0.8rem; font-weight:400; color:#888;">AMS</small></div>
-                            <div class="fw-line"></div>
-                            <div>11:20 <small style="font-size:0.8rem; font-weight:400; color:#888;">KIX</small></div>
+                        <div class="fw-details">
+                            <div class="fw-d-item">
+                                <span class="fw-label">Airline</span>
+                                <strong>KLM Royal Dutch</strong>
+                            </div>
+                            <div class="fw-d-item">
+                                <span class="fw-label">Flight No.</span>
+                                <strong>KL 867</strong>
+                            </div>
+                            <div class="fw-d-item">
+                                <span class="fw-label">Aircraft</span>
+                                <strong>Boeing 787-9</strong>
+                            </div>
                         </div>
-                        <div class="fw-airports">
-                            <span>Amsterdam</span>
-                            <span>Osaka Kansai</span>
-                        </div>
-                        <div class="fw-info">KLM <strong>KL867</strong> • Terminal 1</div>
-                        <a href="https://www.flightradar24.com/KL867" target="_blank" class="fw-link">🌍 Traccia Live su FlightRadar24</a>
+                        <a href="https://www.flightradar24.com/data/flights/kl867" target="_blank" class="fw-link">
+                            <i class="fas fa-satellite-dish"></i> TRACK LIVE FLIGHT
+                        </a>
                     </div>
                 </div>
 
@@ -663,7 +690,7 @@
         <div class="day-card" data-day-id="3">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">10</span><span class="date-month">GEN</span></div>
-                <div class="day-info"><h3>Nara & Gyoza</h3><div class="day-route">Nara Park → Temma</div></div>
+                <div class="day-info"><h3>Nara & Foodie Osaka</h3><div class="day-route">Nara Park → Nakazakicho → Temma</div></div>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
@@ -710,10 +737,41 @@
                         </div>
                     </li>
                     <li class="step">
+                         <div class="step-icon"><i class="fas fa-coffee"></i></div>
+                         <span class="step-time">16:00</span>
+                         <div class="step-title">Nakazakicho Exploration</div>
+                         <div class="step-desc">Quartiere vintage, localini hipster e atmosfera retrò. Perfetto per un caffè pomeridiano dopo Nara.</div>
+                         <div class="step-img-container" onclick="openLightbox('https://insideosaka.com/wp-content/uploads/2014/03/nakazakicho-street.jpg')">
+                             <img src="https://i.ytimg.com/vi/hLZobYA7gKI/maxresdefault.jpg" class="step-img">
+                         </div>
+                    </li>
+                    <li class="step">
                         <div class="step-icon"><i class="fas fa-utensils"></i></div>
                         <span class="step-time">19:30</span>
-                        <div class="step-title">Gyozaclub Rocklee <a href="https://www.google.com/maps/search/?api=1&query=Gyozaclub+Rocklee+Osaka" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Mappa</a></div>
-                        <div class="step-desc">Gyoza creativi in un locale vibrante zona Temma/Kita Ward.</div>
+                        <div class="step-title">DINNER CHOICE: Temma Area</div>
+                        <div class="step-desc" style="margin-bottom:10px;">Zona vibrante piena di lanterne e localini. Scegli il tuo stile:</div>
+                        
+                        <div style="border-left: 3px solid #E65100; padding-left: 10px; margin-bottom: 10px;">
+                            <strong>Opzione A: Noodles Top Class</strong><br>
+                            <span style="font-size:0.9rem;">担担麺 千華 西天満本店 (Dandan Noodles Senka)</span><br>
+                            <span style="font-size:0.75rem; color:#666;">I migliori Dandan Noodles di Osaka. Piccanti il giusto.</span><br>
+                            <button class="rest-link" onclick="openTaxi('osaka_ramen')"><i class="fas fa-taxi"></i> Indirizzo</button>
+                            <a href="https://maps.app.goo.gl/j7MTfMRERxKNKWYC8" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Google Maps</a>
+                        </div>
+                        
+                        <div style="border-left: 3px solid #E65100; padding-left: 10px;">
+                            <strong>Opzione B: Gyoza Vibes</strong><br>
+                            <span style="font-size:0.9rem;">Gyozaclub Rocklee</span><br>
+                             <a href="https://www.google.com/maps/search/?api=1&query=Gyozaclub+Rocklee+Osaka" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Google Maps</a>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-moon"></i></div>
+                        <span class="step-time">LATE NIGHT</span>
+                        <div class="step-title">Tenma Sakaba Sushi-Kin</div>
+                        <div class="step-desc">Se avete ancora fame o volete un'esperienza notturna. Sushi e Noodles fino a tardi.</div>
+                         <button class="rest-link" onclick="openTaxi('osaka_sushi')"><i class="fas fa-taxi"></i> Indirizzo</button>
+                         <a href="https://maps.app.goo.gl/HoQ6xXqoUP4sCKGF8" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Google Maps</a>
                     </li>
                 </ul>
                 <div class="daily-map-container">
@@ -922,7 +980,20 @@
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-tree"></i></div>
                         <span class="step-time">15:30</span>
-                        <div class="step-title">Arashiyama Bamboo</div>
+                        <div class="step-title">Arashiyama Bamboo Choice</div>
+                        <div class="step-desc">Scegli la tua avventura bambù:</div>
+                        
+                        <div style="margin-top:10px; border-left:3px solid #4CAF50; padding-left:10px;">
+                            <strong>A. Classico & Famoso</strong><br>
+                            Arashiyama Bamboo Grove (Gratis)<br>
+                            <small>Molto turistico, ma iconico.</small>
+                        </div>
+                        <div style="margin-top:10px; border-left:3px solid #8E24AA; padding-left:10px;">
+                            <strong>B. Fashion & Hidden</strong><br>
+                            Adashino Nenbutsu-ji (~500¥)<br>
+                            <small>Meno turisti, atmosfera magica, statue di pietra. Vale assolutamente il costo.</small>
+                        </div>
+
                         <div class="step-img-container" onclick="openLightbox('https://www.jal.co.jp/it/it/guide-to-japan/destinations/articles/kyoto/5-ways-to-explore-bamboo-forest/_jcr_content/root/responsivegrid/sectioncontainer/image_1306044576.coreimg.jpeg/1673854242322.jpeg')">
                             <img src="https://www.jal.co.jp/it/it/guide-to-japan/destinations/articles/kyoto/5-ways-to-explore-bamboo-forest/_jcr_content/root/responsivegrid/sectioncontainer/image_1306044576.coreimg.jpeg/1673854242322.jpeg" class="step-img">
                         </div>
@@ -1447,7 +1518,7 @@
         <div class="day-card" data-day-id="15">
             <div class="day-header" onclick="toggleCard(this)">
                 <div class="date-box"><span class="date-num">22</span><span class="date-month">GEN</span></div>
-                <div class="day-info"><h3>Asakusa & Shopping</h3><div class="day-route">Senso-ji → Ginza</div></div>
+                <div class="day-info"><h3>Shopping Blitz</h3><div class="day-route">Asakusa → Ginza → Shibuya</div></div>
                 <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <div class="day-body">
@@ -1458,31 +1529,44 @@
                              <div class="tr-text"><span class="tr-label">SALI A</span>Hatagaya (o Shibuya)</div>
                         </div>
                         <div class="tr-step">
-                             <div class="tr-text"><span class="tr-label">SCENDI A</span>Asakusa Station</div>
+                             <div class="tr-text"><span class="tr-label">SCENDI A</span>Tawaramachi (per HatCoffee)</div>
                         </div>
                     </div>
-                    <span class="transport-cost">Totale: ~600¥ (~4€)</span>
                 </div>
                 <ul class="steps-list">
+                     <li class="step">
+                        <div class="step-icon"><i class="fas fa-coffee"></i></div>
+                        <span class="step-time">09:30</span>
+                        <div class="step-title">HatCoffee (3D Latte Art)</div>
+                        <div class="step-desc">Il famoso cappuccino con il coniglio 3D. <a href="https://maps.app.goo.gl/i9wR55bW6QgvPsi88" target="_blank">Mappa</a>.</div>
+                    </li>
                     <li class="step">
                         <div class="step-icon"><i class="fas fa-vihara"></i></div>
-                        <span class="step-time">09:00</span>
-                        <div class="step-title">Senso-ji</div>
-                        <div class="step-desc">Il più antico tempio di Tokyo.</div>
+                        <span class="step-time">11:00</span>
+                        <div class="step-title">Senso-ji & Nakamise</div>
                         <div class="step-img-container" onclick="openLightbox('https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg')">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cloudy_Sens%C5%8D-ji.jpg/1200px-Cloudy_Sens%C5%8D-ji.jpg" class="step-img">
                         </div>
                     </li>
                     <li class="step">
-                        <div class="step-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <div class="step-icon"><i class="fas fa-tshirt"></i></div>
                         <span class="step-time">14:00</span>
-                        <div class="step-title">Shopping Finale</div>
+                        <div class="step-title">Uniqlo Ginza Flagship</div>
+                        <div class="step-desc">Il più grande al mondo. 12 Piani di Uniqlo.</div>
+                        <a href="https://maps.app.goo.gl/uXjGq5v7Yg5xZ1x58" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Mappa</a>
+                    </li>
+                    <li class="step">
+                        <div class="step-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <span class="step-time">17:00</span>
+                        <div class="step-title">Last Minute: Daiso Shibuya</div>
+                        <div class="step-desc">Spostamento a Shibuya per regali finali al <strong>Daiso Shibuya Mark City</strong> (Il più grande).</div>
+                        <a href="https://maps.app.goo.gl/hQ5kZ8yX3x5xZ1x58" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Mappa Daiso</a>
                     </li>
                     <li class="step">
                          <div class="step-icon"><i class="fas fa-utensils"></i></div>
                          <span class="step-time">19:30</span>
                          <div class="step-title">Sushiya Ginzo <a href="https://www.google.com/maps/search/?api=1&query=Sushiya+Ginzo+Akihabara" target="_blank" class="rest-link"><i class="fas fa-map-pin"></i> Mappa</a></div>
-                         <div class="step-desc">Ultimo Sushi ad Akihabara.</div>
+                         <div class="step-desc">Ultimo Sushi ad Akihabara o Shibuya.</div>
                     </li>
                 </ul>
                 <div class="daily-map-container">
@@ -1505,20 +1589,20 @@
                 <div class="flight-widget">
                     <div class="fw-header"><i class="fas fa-plane-departure"></i> BOARDING PASS • DEPARTURE</div>
                     <div class="fw-body">
-                         <div class="fw-top-row">
-                            <img src="https://toppng.com/uploads/preview/air-france-logo-vector-free-download-11574238910zq087z0bwg.png" class="airline-logo" alt="Air France">
-                            <span class="status-badge">Scheduled</span>
+                         <div class="fw-top-row" style="display:flex; justify-content:space-between; align-items:center;">
+                            <img src="https://toppng.com/uploads/preview/air-france-logo-vector-free-download-11574238910zq087z0bwg.png" class="airline-logo" style="height:30px;" alt="Air France">
+                            <span class="status-badge" style="background:#4CAF50; color:white; padding:4px 8px; border-radius:4px; font-size:0.65rem; font-weight:700;">Scheduled</span>
                         </div>
-                        <div class="fw-route">
+                        <div class="fw-route" style="display:flex; justify-content:space-between; align-items:center; margin:10px 0; font-size:1.4rem; font-weight:900;">
                             <div>09:05 <small style="font-size:0.8rem; font-weight:400; color:#888;">HND</small></div>
-                            <div class="fw-line"></div>
+                            <div class="fw-line" style="flex:1; height:2px; background:#ddd; margin:0 15px; position:relative;"></div>
                             <div>15:55 <small style="font-size:0.8rem; font-weight:400; color:#888;">CDG</small></div>
                         </div>
-                        <div class="fw-airports">
+                        <div class="fw-airports" style="display:flex; justify-content:space-between; font-size:0.75rem; color:#666; font-weight:600; text-transform:uppercase;">
                             <span>Tokyo Haneda</span>
                             <span>Paris CDG</span>
                         </div>
-                        <div class="fw-info">Air France <strong>AF281</strong> • Terminal 3</div>
+                        <div class="fw-info" style="font-size:0.75rem; color:#666; background:#f5f5f5; padding:8px; border-radius:6px; text-align:center;">Air France <strong>AF281</strong> • Terminal 3</div>
                         <a href="https://www.flightradar24.com/AF281" target="_blank" class="fw-link">🌍 Traccia Live su FlightRadar24</a>
                     </div>
                 </div>
@@ -1856,7 +1940,11 @@
         'g2_aqua': { jp: '海遊館 (Kaiyukan) 〒552-0022 大阪府大阪市港区海岸通1-1-10', name: 'Aquarium Kaiyukan' },
         'g5_kyoto': { jp: '伏見稲荷大社 (Fushimi Inari) 〒612-0882 京都府京都市伏見区深草藪之内町68', name: 'Fushimi Inari Taisha' },
         'g6_kyoto': { jp: '嵐山 (Arashiyama Bamboo Grove) 京都府京都市右京区嵐山', name: 'Arashiyama' },
-        'g14_tokyo': { jp: 'チームラボボーダレス (TeamLab) 麻布台ヒルズ', name: 'TeamLab Borderless Azabudai' }
+        'g14_tokyo': { jp: 'チームラボボーダレス (TeamLab) 麻布台ヒルズ', name: 'TeamLab Borderless Azabudai' },
+        
+        // New Additions
+        'osaka_ramen': { jp: '〒530-0047 大阪市北区西天満3-8-4 担担麺 千華', name: 'Dandan Noodles Senka' },
+        'osaka_sushi': { jp: '〒530-0041 大阪市北区天神橋5-7-28 天満酒場 すし金', name: 'Tenma Sakaba Sushi-Kin' }
     };
 
     function openTaxi(key) {
@@ -1904,7 +1992,8 @@
             start: { lat: 34.666, lng: 135.518, name: 'Cosy House', icon: 'home', time: '09:30', type: 'home' },
             points: [
                 { lat: 34.6850, lng: 135.8430, name: 'Nara Park', icon: 'leaf', time: '10:30', type: 'visit' },
-                { lat: 34.7046, lng: 135.5113, name: 'Temma (Cena)', icon: 'utensils', time: '19:30', type: 'food' }
+                { lat: 34.7075, lng: 135.5055, name: 'Nakazakicho', icon: 'coffee', time: '16:00', type: 'visit' },
+                { lat: 34.6974, lng: 135.5036, name: 'Senka Ramen', icon: 'utensils', time: '19:30', type: 'food' }
             ]
         },
         4: {
@@ -1925,7 +2014,7 @@
             start: { lat: 34.9778, lng: 135.7512, name: 'Comfort Hotel', icon: 'home', time: '09:00', type: 'home' },
             points: [
                 { lat: 35.0394, lng: 135.7292, name: 'Kinkaku-ji', icon: 'star', time: '10:00', type: 'visit' },
-                { lat: 35.0094, lng: 135.6668, name: 'Arashiyama', icon: 'tree', time: '15:30', type: 'visit' }
+                { lat: 35.0264, lng: 135.6607, name: 'Adashino Nenbutsu-ji', icon: 'tree', time: '15:30', type: 'visit' }
             ]
         },
         7: {
@@ -1989,8 +2078,9 @@
         15: {
             start: { lat: 35.6792, lng: 139.6766, name: 'Calm House', icon: 'home', time: '08:30', type: 'home' },
             points: [
-                { lat: 35.7147, lng: 139.7967, name: 'Senso-ji', icon: 'vihara', time: '09:00', type: 'visit' },
-                { lat: 35.6717, lng: 139.7649, name: 'Ginza Shopping', icon: 'shopping-bag', time: '14:00', type: 'visit' }
+                { lat: 35.7077, lng: 139.7915, name: 'HatCoffee', icon: 'coffee', time: '09:30', type: 'visit' },
+                { lat: 35.6698, lng: 139.7638, name: 'Uniqlo Ginza', icon: 'tshirt', time: '14:00', type: 'visit' },
+                { lat: 35.6585, lng: 139.6991, name: 'Daiso Shibuya', icon: 'shopping-bag', time: '17:00', type: 'visit' }
             ]
         },
         16: {
